@@ -1,5 +1,6 @@
 package com.redeSocial.edunity.controller;
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,8 +31,5 @@ public class TemaController {
 	public ResponseEntity<Tema> GetById(@PathVariable long id){
 		return temaRepository.findById(id).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
 	}
-	
-	
-	
 	
 }
