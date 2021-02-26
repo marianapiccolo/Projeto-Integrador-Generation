@@ -1,6 +1,7 @@
 package com.redeSocial.edunity.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,7 +12,9 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
+//	private @ManyToMany (cascade = CascadeType.ALL)
+//@JoinTable (name = "USUARIO_PRODUTO", joinColumns = {@JoinColumn(name = "PRODUTO_ID")}, 
+//inverseJoinColumns = {@JoinColumn(name = "USUARIO_ID")}) @JsonIgnoreProperties ("Usuario") List<Produto> produto;
 
 @Entity
 @Table(name = "postagem")
