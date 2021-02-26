@@ -19,7 +19,7 @@ public class Tema {
 	private String categoria;
 	
 	@NotNull
-	@Size(min = 5, max = 50)
+	@Size(min = 2, max = 50)
 	private String tags;
 	
 	@Size(min = 10, max = 1000)
