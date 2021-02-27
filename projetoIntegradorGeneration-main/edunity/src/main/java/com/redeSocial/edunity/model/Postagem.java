@@ -1,8 +1,6 @@
 package com.redeSocial.edunity.model;
 
 import java.util.Date;
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,27 +17,16 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "postagem")
 public class Postagem {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
-
-	@NotNull
-	@Size(min = 5, max = 50)
-	private String titulo;
-	
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date date =new java.sql.Date(System.currentTimeMillis());
-	
-	/*Aqui vai um private ibagens
+		
+	private @Id @GeneratedValue(strategy = GenerationType.IDENTITY) long id;
+	private @NotNull @Size(min = 5, max = 50) String titulo;
+	private @Temporal(TemporalType.TIMESTAMP) Date date =new java.sql.Date(System.currentTimeMillis());	
+	/*Aqui vai um private imagens
 	@Controller
 	public class Postagem{
 		public static String uploadDirectory = System.getProperty("")
 	}*/
-	
-	@NotNull
-	@Size(min = 10, max = 1000)
-	private String conteudo;
+	private @NotNull @Size(min = 10, max = 1000) String conteudo;
 
 	public long getId() {
 		return id;
