@@ -10,20 +10,10 @@ import javax.validation.constraints.Size;
 @Entity
 public class Tema {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
-	
-	@NotNull
-	@Size(min = 5, max = 50)
-	private String categoria;
-	
-	@NotNull
-	@Size(min = 5, max = 50)
-	private String tags;
-	
-	@Size(min = 10, max = 1000)
-	private String descricao;
+	private @Id @GeneratedValue(strategy = GenerationType.IDENTITY) long id;
+	private @NotNull @Size(min = 5, max = 50) String categoria;
+	private @NotNull @Size(min = 2, max = 50)String tags;
+	private @Size(min = 10, max = 1000) String descricao;
 
 	public long getId() {
 		return id;
