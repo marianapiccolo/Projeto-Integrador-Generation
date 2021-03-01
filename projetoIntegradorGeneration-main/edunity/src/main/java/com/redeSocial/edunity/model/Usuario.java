@@ -16,6 +16,7 @@ public class Usuario {
 	private @NotNull @Size(min = 3, max = 60) String nome;
 	private @NotNull @Size(min = 5, max = 60) String email;
 	private @NotNull @Size(min = 3, max = 20) String senha;
+
 	public long getId() {
 		return id;
 	}
