@@ -17,45 +17,48 @@ import com.redeSocial.edunity.model.Tema;
 import com.redeSocial.edunity.repository.TemaRepository;
 
 @RestController
-@RequestMapping ("/tema")
+@RequestMapping("/tema")
 @CrossOrigin("*")
 public class TemaController {
 
 	@Autowired
 	private TemaRepository temaRepository;
-	
+
 	@GetMapping
-	public ResponseEntity<List<Tema>> GetAll(){
+	public ResponseEntity<List<Tema>> GetAll() {
 		return ResponseEntity.ok(temaRepository.findAll());
 	}
-	
-	@GetMapping ("/{id}")
-	public ResponseEntity<Tema> GetById(@PathVariable long id){
-		return temaRepository.findById(id).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
+
+	@GetMapping("/{id}")
+	public ResponseEntity<Tema> GetById(@PathVariable long id) {
+		return temaRepository.findById(id).map(resp -> ResponseEntity.ok(resp))
+				.orElse(ResponseEntity.notFound().build());
 	}
-	
-	@GetMapping ("/tema/{descricao}")
-	public ResponseEntity<List<Tema>> GetByDescricao(@PathVariable String descricao){
+
+	@GetMapping("/tema/{descricao}")
+	public ResponseEntity<List<Tema>> GetByDescricao(@PathVariable String descricao) {
 		return ResponseEntity.ok(temaRepository.findAllByDescricaoContainingIgnoreCase(descricao));
 	}
-	
-	@PostMapping 
-	public ResponseEntity<Tema> postTema (@RequestBody Tema tema){
+
+	@PostMapping
+	public ResponseEntity<Tema> postTema(@RequestBody Tema tema) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(temaRepository.save(tema));
 	}
-	
+
 	@PutMapping
-	public ResponseEntity<Tema> putTema (@RequestBody Tema tema){
+	public ResponseEntity<Tema> putTema(@RequestBody Tema tema) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(temaRepository.save(tema));
 	}
-	
-	@DeleteMapping ("/{id}")	
-	public void deleteTema (@PathVariable long id) {
+
+	@DeleteMapping("/{id}")
+	public void deleteTema(@PathVariable long id) {
 		temaRepository.deleteById(id);
 	}
-	
-	/*@DeleteMapping ("/{id}")
-	public ResponseEntity<?> deleteById (@PathVariable long id) {
-		return new ResponseEntity<String>("Tema deletado", HttpStatus.OK);
-	}*/
+
+	/*
+	 * Precisa do "service"
+	 * @DeleteMapping ("/{id}") public ResponseEntity<?> deleteById (@PathVariable
+	 * long id) { return new ResponseEntity<String>("Tema deletado", HttpStatus.OK);
+	 * } 
+	 */
 }
