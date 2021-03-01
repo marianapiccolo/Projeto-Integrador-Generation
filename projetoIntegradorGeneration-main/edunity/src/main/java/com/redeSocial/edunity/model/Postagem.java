@@ -5,14 +5,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-//	private @ManyToMany (cascade = CascadeType.ALL)
-//@JoinTable (name = "USUARIO_PRODUTO", joinColumns = {@JoinColumn(name = "PRODUTO_ID")}, 
-//inverseJoinColumns = {@JoinColumn(name = "USUARIO_ID")}) @JsonIgnoreProperties ("Usuario") List<Produto> produto;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "postagem")
@@ -27,6 +26,8 @@ public class Postagem {
 		public static String uploadDirectory = System.getProperty("")
 	}*/
 	private @NotNull @Size(min = 10, max = 1000) String conteudo;
+	private @ManyToOne @JsonIgnoreProperties ("Postagem") Tema tema;
+	private @ManyToOne @JsonIgnoreProperties ("Postagem") Usuario usuario;
 
 	public long getId() {
 		return id;
@@ -59,6 +60,20 @@ public class Postagem {
 	public void setConteudo(String conteudo) {
 		this.conteudo = conteudo;
 	}
-	
-	
+
+	public Tema getTema() {
+		return tema;
+	}
+
+	public void setTema(Tema tema) {
+		this.tema = tema;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}	
 }
