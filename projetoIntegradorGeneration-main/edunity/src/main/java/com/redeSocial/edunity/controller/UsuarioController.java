@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.redeSocial.edunity.model.UserLogin;
 import com.redeSocial.edunity.model.Usuario;
 import com.redeSocial.edunity.repository.UsuarioRepository;
+import com.redeSocial.edunity.service.UsuarioService;
 
 @RestController
 @RequestMapping("/usuario")
@@ -32,14 +33,14 @@ public class UsuarioController {
 
 	@PostMapping("/login")
 	public ResponseEntity<UserLogin> Autentication(@RequestBody Optional<UserLogin> user) {
-		return usuarioService.Logar(user).map(resp -> ResponseEntity.ok(resp))
+		return usuarioService.logar(user).map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
 	}
 	
 	@PostMapping("/cadastrar")
 	public ResponseEntity<Usuario> Post(@RequestBody Usuario usuario) {
 		return ResponseEntity.status(HttpStatus.CREATED)
-				.body(usuarioService.CadastrarUsuario(usuario));
+				.body(usuarioService.cadastrarUsuario(usuario));
 	}
 	
 	@GetMapping
