@@ -23,7 +23,7 @@ public class UsuarioService {
 		usuario.setSenha(senhaEncoder);
 		
 		return repository.save(usuario);
-	}
+	}//ola
 	
 	public Optional<UserLogin> logar (Optional<UserLogin> user) {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
