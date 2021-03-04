@@ -1,19 +1,13 @@
 package com.redeSocial.edunity.model;
 
 public class UserLogin {	 
-	private String nome,usuario,senha,token;
+	private String nome,senha,token;
 	 
 	public String getNome() {
 		return nome;
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-	public String getUsuario() {
-		return usuario;
-	}
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
 	}
 	public String getSenha() {
 		return senha;
