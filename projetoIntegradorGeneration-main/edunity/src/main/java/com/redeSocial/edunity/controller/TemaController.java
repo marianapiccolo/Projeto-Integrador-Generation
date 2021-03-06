@@ -18,7 +18,7 @@ import com.redeSocial.edunity.repository.TemaRepository;
 
 @RestController
 @RequestMapping("/tema")
-@CrossOrigin("*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class TemaController {
 
 	@Autowired
