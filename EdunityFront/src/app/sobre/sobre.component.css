@@ -1,0 +1,15 @@
+.centralizar {
+    text-align: center;
+ }
+
+ .dimensao {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+ }
+
+ .padding {
+     padding: 100px;
+ }
