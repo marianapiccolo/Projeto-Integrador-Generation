@@ -1,1 +1,49 @@
-<p>cadastrar works!</p>
+<div class="container-fluid">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-6 mt-5 mb-5">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-10">
+                    <h1 class="text-center">Cadastrar</h1>
+                    <div class="form-group">
+                        <label for="nome">Nome Completo</label>
+                        <input class="form-control" type="text" name="nome" id="nome" placeholder="seu nome completo">
+                    </div>
+                    <div class="form-group">
+                        <label for="usuario">Usuárie</label>
+                        <input class="form-control" type="text" name="usuario" id="usuario" placeholder="seu usuário">
+                    </div>
+                    <div class="form-group">
+                        <label for="e-mail">E-mail</label>
+                        <input class="form-control" type="email" name="email" id="email" placeholder="seu email">
+                    </div>
+                    <label for="inputPassword5">Senha</label>
+                    <input type="password" name="senha" id="senha" class="form-control" placeholder="sua senha"
+                        aria-describedby="passwordHelpBlock">
+                    <small id="passwordHelpBlock" class="form-text text-muted">
+                        Sua senha deve ter entre 8 e 20 caracteres, os quais devem ser letras e números, sem espaços,
+                        caracteres especiais ou emojis.
+                    </small>
+                    <div class="form-group">
+                        <label for="confirmsenha">Comfirmar Senha</label>
+                        <input class="form-control" type="password" name="confirmsenha" id="confirmsenha"
+                            placeholder="confirme sua senha">
+                    </div>
+                    <div class="form-group">
+                        <label for="tipo">Tipo de usuário</label>
+                        <select class="form-control" name="tipo" id="tipo">
+                            <option>Selecione um tipo de usuário:</option>
+                            <option value="normal">Normal</option>
+                            <option value="adm">Administrador</option>
+                        </select>
+                    </div>
+                    <div>
+                        <div class="d-flex justify-content-center">
+                            <button type="submit" class="btn btn-outline-secondary" routerLink='/login'>Cancelar</button>
+                            <button type="submit" class="btn btn-outline-info">Cadastrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
