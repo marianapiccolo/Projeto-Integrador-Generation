@@ -1,0 +1,31 @@
+/**Centro**/
+.top-145{
+    margin-top: 145px;
+}
+
+/**Fontes**/
+.fs-16{
+    font-size: 16pt;
+}
+.fs-24{
+    font-size: 24pt;
+}
+
+
+/**Botão**/
+.button{
+    border-radius: 13px;
+    padding: 5px 200px;
+    /**background-color:#f4eb7a ;**/
+}
+
+.button:hover{
+    color: #C4C4C4;
+}
+
+/**Label Usuárie e Senha**/
+.l-entrar{
+border: 1px solid #000000;
+box-sizing: border-box;
+border-radius: 5px;
+}

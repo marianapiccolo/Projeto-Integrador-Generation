@@ -1,0 +1,14 @@
+ul.lista {
+    list-style: none;
+}
+
+ul.lista li{
+    display: inline;
+}
+
+a {
+    color: black;
+    margin-left: 13px;
+    margin-right: 13px;
+}
+
