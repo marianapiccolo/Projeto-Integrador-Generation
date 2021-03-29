@@ -1,7 +1,3 @@
-/**Centro**/
-.top-145{
-    margin-top: 145px;
-}
 
 /**Fontes**/
 .fs-16{
@@ -15,17 +11,20 @@
 /**Botão**/
 .button{
     border-radius: 13px;
-    padding: 5px 200px;
-    /**background-color:#f4eb7a ;**/
+    background-color:#1A254D;
+    color: white;
 }
 
 .button:hover{
-    color: #C4C4C4;
+    color: #C0C0C0;
 }
 
 /**Label Usuárie e Senha**/
 .l-entrar{
-border: 1px solid #000000;
 box-sizing: border-box;
 border-radius: 5px;
 }
+
+.mt-7p {
+    margin-top: 7%;
+  }
