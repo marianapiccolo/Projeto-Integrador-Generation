@@ -1,0 +1,62 @@
+<!--Lado esquerdo-->
+<div class="container-fluid">
+    <div class="row bg-secondary">
+        <div class="col-md-12 text-white">
+            <a routerLink="" class="text-white text-left">
+                <i class="fa fa-angle-double-left" aria-hidden="true" ></i> inicio
+            </a>
+
+            
+            <h1 class="text-center">Tags</h1>
+            <h5 class="text-center">hfdsdfusguwgueguwg</h5>
+
+            <div class="row d-flex justify-content-center mt-4 mb-5">
+                <div class="col-md-3">
+                    
+                    <div class="d-flex justify-content-center">
+                        <button class="btn btn-light" (click)="cadastrar()">Cadastrar</button>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<!--/lado esquedo-->
+
+<!--Meio-->
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <h2 class="text-center">Tags Cadastradas</h2>
+        </div>
+
+    </div>
+
+    <div class="row mt-3 mb-5 d-flex justify-content-center">
+        <div class="col-md-6">
+
+            <table class="table">
+                
+                <tbody>
+                  <tr *ngFor="let item of listaTemas">
+                    <th>{{item.id}}</th>
+                    <td>{{item.descricao}}</td>
+                    <td class="d-flex justify-content-end">
+                        <button class="btn mr-3" [routerLink]="['/tema-edit', item.id]" >Editar tema</button>
+                        <button class="btn" [routerLink]="['/tema-delete', item.id]" >Apagar tema</button>
+                    </td>
+                    
+                  </tr>
+                 
+                </tbody>
+              </table>
+
+        </div>
+
+    </div>
+</div>
