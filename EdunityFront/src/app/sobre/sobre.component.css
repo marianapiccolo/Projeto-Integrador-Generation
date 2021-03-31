@@ -7,9 +7,16 @@
     flex-flow: row;
     justify-content: center;
     align-items: center;
-    padding: 20px;
  }
 
  .padding {
      padding: 100px;
+ }
+
+ .paddingtext {
+     padding: 30px;
+ }
+
+ .direita{
+     text-align: end;
  }

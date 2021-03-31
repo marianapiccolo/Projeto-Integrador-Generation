@@ -1,1 +1,34 @@
-<p>entrar works!</p>
+<div class="container-fluid mb-5">
+  <div class="row d-flex justify-content-center align-items-center mt-7p">
+
+    <!--Imagem-->
+    <div class="col-md-3 d-flex justify-content-end mr-3">
+
+      <img src="../../assets/img/Rectangle 5.png" alt="Logo Edunity">
+
+    </div>
+    <!--/Imagem-->
+
+    <!--Formulário-->
+    <div class="col-md-3 d-flex justify-content-start">
+      <form class="shadow rounded p-3">
+        <div class="form-group" class="font-weight-bold">
+          <label for="usuario" class="fs-24" style="color: #1A254D;">Entrar</label>
+          <input type="text" class="form-control fs-16 l-entrar" id="usuario" placeholder="Usuárie" />
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1"></label>
+          <input type="password" class="form-control fs-16 l-entrar" id="exampleInputPassword1" placeholder="Senha" />
+          <p class=""><a href="#">Esqueceu sua Senha?</a></p>
+        </div>
+        <button type="submit" class="btn fs-16 btn-block button">
+          Entrar
+        </button>
+        <p class="d-flex justify-content-center">
+          Novo no Edunity?<a class="ml-2" routerLink="/cadastrar">Cadastre-se</a>
+        </p>
+      </form>
+    </div>
+    <!--/Formulário-->
+  </div>
+</div>
