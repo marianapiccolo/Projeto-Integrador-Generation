@@ -4,7 +4,7 @@ import { CadastrarComponent } from './cadastrar/cadastrar.component';
 import { EntrarComponent } from './entrar/entrar.component';
 import { FeedComponent } from './feed/feed.component';
 import { SobreComponent } from './sobre/sobre.component';
-import { TemaComponent } from './tema/tema.component';
+import { ValidMentorComponent } from './valid-mentor/valid-mentor.component';
 
 const routes: Routes = [
 
@@ -13,7 +13,7 @@ const routes: Routes = [
   {path: "cadastrar", component: CadastrarComponent},
   {path: "sobre", component:SobreComponent},
   {path: "feed", component:FeedComponent},
-  {path: "tema", component:TemaComponent}
+  {path: "validacao", component: ValidMentorComponent}
   
 ];
 
