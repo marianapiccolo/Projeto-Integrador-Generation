@@ -11,6 +11,7 @@ import { RodapeComponent } from './rodape/rodape.component';
 import { FeedComponent } from './feed/feed.component';
 import { RodapeFeedComponent } from './rodape-feed/rodape-feed.component';
 import { TemaComponent } from './tema/tema.component';
+import { ValidMentorComponent } from './valid-mentor/valid-mentor.component'
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { TemaComponent } from './tema/tema.component';
     RodapeComponent,
     FeedComponent,
     RodapeFeedComponent,
-    TemaComponent
+    TemaComponent,
+    ValidMentorComponent
   ],
   imports: [
     BrowserModule,
