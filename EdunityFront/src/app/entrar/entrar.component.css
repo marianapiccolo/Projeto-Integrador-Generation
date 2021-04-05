@@ -1,0 +1,30 @@
+
+/**Fontes**/
+.fs-16{
+    font-size: 16pt;
+}
+.fs-24{
+    font-size: 24pt;
+}
+
+
+/**Botão**/
+.button{
+    border-radius: 13px;
+    background-color:#1A254D;
+    color: white;
+}
+
+.button:hover{
+    color: #C0C0C0;
+}
+
+/**Label Usuárie e Senha**/
+.l-entrar{
+box-sizing: border-box;
+border-radius: 5px;
+}
+
+.mt-7p {
+    margin-top: 7%;
+  }
