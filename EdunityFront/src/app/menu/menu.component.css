@@ -1,0 +1,35 @@
+a{
+    cursor: pointer;
+}
+/**CORES**/
+.fundo{
+    background-color: #1A254D;
+}
+.pesquisar{
+    background-color: #f4eb7a;
+}
+/**ANIMAÇÕES**/
+.imagem1{
+    transition: all 1.5s;
+    cursor: pointer;
+    width: 34px;
+    height: 34px;
+}
+
+.imagem1:hover{
+    -webkit-transform: rotateZ(360deg);
+    transform: rotateZ(360deg);
+    transition-timing-function: ease-in-out;
+}
+
+.imagem5{
+    transition: all .5s;
+    border: 3px solid transparent;
+    width: 37px;
+    height: 37px;
+}
+.imagem5:hover{
+    border: 3px solid #c0c0c0;
+    border-radius: 5%;
+}
+
