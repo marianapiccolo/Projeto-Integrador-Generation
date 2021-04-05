@@ -8,6 +8,7 @@ import { EntrarComponent } from './entrar/entrar.component';
 import { CadastrarComponent } from './cadastrar/cadastrar.component';
 import { SobreComponent } from './sobre/sobre.component';
 import { RodapeComponent } from './rodape/rodape.component';
+import { TemaComponent } from './tema/tema.component';
 import { ValidMentorComponent } from './valid-mentor/valid-mentor.component';
 
 @NgModule({
@@ -18,6 +19,7 @@ import { ValidMentorComponent } from './valid-mentor/valid-mentor.component';
     CadastrarComponent,
     SobreComponent,
     RodapeComponent,
+    TemaComponent,
     ValidMentorComponent
   ],
   imports: [
