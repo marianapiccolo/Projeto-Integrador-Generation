@@ -1,0 +1,217 @@
+<div class="container-fluid m-5">
+  <div class="row">
+    <div class="col-9">
+      <!--Card Usuário-->
+      <div class="card usercard">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-8 d-flex justify-content-start">
+              <div class="text-left">
+                <img
+                  class="fotouser"
+                  src="../../assets/Edunity.jpg"
+                  alt="Foto do Usuárie"
+                />
+                <h6 class="card-title">Nome Completo</h6>
+                <p class="text-muted">Usuárie</p>
+                <p class="text-muted card-text">
+                  Tipo da Conta - Assunto (Se Professor)
+                </p>
+              </div>
+            </div>
+            <div class="col-4 d-flex align-items-end justify-content-end">
+              <a
+                href="#"
+                class="button btn btn-primary pull-right"
+                data-toggle="modal"
+                data-target="#EditarPerfil"
+                >Editar Perfil</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--/Card Usuário-->
+
+      <!--Licenças e Certificados-->
+      <div class="container-fluid licenças my-3">
+        <div class="card-body">
+          <div class="row">
+            <p class="card-title" style="width: 38rem">
+              Licenças e Certificados
+            </p>
+            <div class="row my-5">
+              <div class="col-sm-4">
+                <div class="card mr-3">
+                  <div class="card-body">
+                    <h5 class="card-title">Certificado</h5>
+                    <p class="card-text">
+                      Clique aqui para conferir o certificado.
+                    </p>
+                    <a href="#" class="btn btn-primary">Visualizar</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="card mr-3">
+                  <div class="card-body">
+                    <h5 class="card-title">Certificado</h5>
+                    <p class="card-text">
+                      Clique aqui para conferir o certificado.
+                    </p>
+                    <a href="#" class="btn btn-primary">Visualizar</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="card mr-3">
+                  <div class="card-body">
+                    <h5 class="card-title">Certificado</h5>
+                    <p class="card-text">
+                      Clique aqui para conferir o certificado.
+                    </p>
+                    <a href="#" class="btn btn-primary">Visualizar</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--/Licenças e Certificados-->
+    </div>
+    <div class="col-3">
+      <!--Propaganda-->
+
+      <div class="">
+        <table class="propaganda">
+          <iframe
+            src="https://giphy.com/embed/sDcfxFDozb3bO"
+            frameBorder="0"
+            class="giphy-embed"
+            allowFullScreen
+          ></iframe>
+          <p><a href="https://giphy.com/gifs/french-week-sDcfxFDozb3bO"></a></p>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--/Propaganda-->
+
+<!--Rodapé-->
+
+<!--/Rodapé-->
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  data-backdrop="static"
+  id="EditarPerfil"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="TituloModalCentralizado"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: #c0c0c0">
+        <h5 class="modal-title" id="TituloModalCentralizado">Editar Perfil</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Fechar"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="f-modal">
+          <form>
+            <div
+              class="form-group d-flex justify-content-center align-items-center"
+            >
+              <img
+                class="fotouser"
+                src="../../assets/Edunity.jpg"
+                alt="Foto do Usuárie"
+              />
+              <a href="#">Alterar foto</a>
+            </div>
+            <div class="form-group">
+              <label for="nome">Nome Completo</label>
+              <input
+                class="form-control shadow rounded"
+                type="text"
+                name="nome"
+                id="nome"
+                placeholder="Nome Completo (Atual)"
+              />
+            </div>
+            <div class="form-group">
+              <label for="usuario">Usuárie</label>
+              <input
+                class="form-control shadow rounded"
+                type="text"
+                name="usuario"
+                id="usuario"
+                placeholder="Usuárie (Atual)"
+              />
+            </div>
+            <div class="form-group">
+              <label for="e-mail">E-mail</label>
+              <input
+                class="form-control shadow rounded"
+                type="email"
+                name="email"
+                id="email"
+                placeholder="E-mail (Atual)"
+              />
+            </div>
+            <label for="inputPassword5">Altere sua senha</label>
+            <input
+              type="password"
+              name="senha"
+              id="senha"
+              class="form-control shadow rounded"
+              placeholder="Crie uma senha"
+              aria-describedby="passwordHelpBlock"
+            />
+            <label for="confirmsenha" class="mt-3">Confirmar Senha</label>
+            <input
+              class="form-control shadow rounded"
+              type="password"
+              name="confirmsenha"
+              id="confirmsenha"
+              placeholder="Confirme sua senha"
+            />
+          </form>
+        </div>
+
+        <!--Botões-->
+        <div class="modal-footer">
+          <div class="">
+            <div class="d-flex">
+              <button
+                type="submit"
+                class="btn b-modal-cancel"
+                data-dismiss="modal"
+              >
+                Cancelar
+              </button>
+              <button type="submit" class="ml-2 btn b-modal">
+                Salvar Alterações
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- /Botões-->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- /Modal -->
