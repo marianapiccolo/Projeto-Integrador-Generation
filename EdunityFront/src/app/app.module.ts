@@ -9,6 +9,9 @@ import { CadastrarComponent } from './cadastrar/cadastrar.component';
 import { SobreComponent } from './sobre/sobre.component';
 import { RodapeComponent } from './rodape/rodape.component';
 import { CRUDUsuarioComponent } from './crudusuario/crudusuario.component';
+import { TemaComponent } from './tema/tema.component';
+import { ValidMentorComponent } from './valid-mentor/valid-mentor.component';
+
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import { CRUDUsuarioComponent } from './crudusuario/crudusuario.component';
     CadastrarComponent,
     SobreComponent,
     RodapeComponent,
-    CRUDUsuarioComponent
+    CRUDUsuarioComponent,
+    TemaComponent,
+    ValidMentorComponent
+
   ],
   imports: [
     BrowserModule,
