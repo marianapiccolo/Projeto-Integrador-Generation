@@ -1,9 +1,13 @@
 ul.lista {
     list-style: none;
+    margin: 0px;
+    padding: 0px;
 }
 
 ul.lista li{
     display: inline;
+    margin: 0px;
+    padding: 0px;
 }
 
 a {

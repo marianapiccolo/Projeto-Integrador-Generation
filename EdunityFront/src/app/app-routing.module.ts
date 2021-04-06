@@ -13,8 +13,9 @@ const routes: Routes = [
   {path: "entrar", component: EntrarComponent},
   {path: "cadastrar", component: CadastrarComponent},
   {path: "sobre", component:SobreComponent},
-  {path: "feed", component:TemaComponent},
-  {path: "tema", component:TemaComponent}
+  {path: "feed", component:FeedComponent},
+  {path: "tema", component:TemaComponent},
+  {path: "validacao", component:ValidMentorComponent}
   
 ];
 
