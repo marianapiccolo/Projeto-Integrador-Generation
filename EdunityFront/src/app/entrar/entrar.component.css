@@ -17,18 +17,33 @@
 
 .button:hover{
     color: #C0C0C0;
+    background-color:#212e60;
 }
 
-/**Label Usuárie e Senha**/
+/**Label Usuárie, Senha e entrar**/
 .l-entrar{
 box-sizing: border-box;
 border-radius: 5px;
 }
-
+.entrar{
+    color: #1A254D;
+}
 .mt-7p {
     margin-top: 7%;
   }
 
   .border{
     border-radius: 21px;
+}
+  
+ /**animação**/ 
+  .imagem1{
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+.imagem1:hover{
+    -webkit-filter: drop-shadow(15px 10px 5px rgba(0,0,0,.5));
+    filter: drop-shadow(15px 10px 5px rgba(0,0,0,.5));
+    transition-timing-function: ease-in-out;
 }

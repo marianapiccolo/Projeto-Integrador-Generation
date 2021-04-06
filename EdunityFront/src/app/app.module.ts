@@ -10,8 +10,10 @@ import { SobreComponent } from './sobre/sobre.component';
 import { RodapeComponent } from './rodape/rodape.component';
 import { FeedComponent } from './feed/feed.component';
 import { RodapeFeedComponent } from './rodape-feed/rodape-feed.component';
+import { CRUDUsuarioComponent } from './crudusuario/crudusuario.component';
 import { TemaComponent } from './tema/tema.component';
 import { ValidMentorComponent } from './valid-mentor/valid-mentor.component'
+
 
 @NgModule({
   declarations: [
@@ -23,8 +25,10 @@ import { ValidMentorComponent } from './valid-mentor/valid-mentor.component'
     RodapeComponent,
     FeedComponent,
     RodapeFeedComponent,
+    CRUDUsuarioComponent,
     TemaComponent,
     ValidMentorComponent
+
   ],
   imports: [
     BrowserModule,
