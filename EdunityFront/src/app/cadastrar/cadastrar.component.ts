@@ -37,12 +37,21 @@ export class CadastrarComponent implements OnInit {
     if(this.user.senha != this.confirmarSenha){
       alert("As senhas estão divergentes")
     } else {
-      this.authService.cadastrar(this.user).subscribe((resp: User) => {
+      if(this.user.tipo == "Professor/Mentor"){
+        this.authService.cadastrar(this.user).subscribe((resp: User) => {
         this.user = resp
-        this.router.navigate(["/login"])
-        alert("Usuárie cadastrado com sucesso!")
       })
+        this.router.navigate(["/validacao"])
+      } else {
+        this.authService.cadastrar(this.user).subscribe((resp: User) => {
+          this.user = resp
+          this.router.navigate(["/login"])
+          alert("Usuárie cadastrado com sucesso!")
+        })
+      }
     }
+
+    
   }
 
 }
