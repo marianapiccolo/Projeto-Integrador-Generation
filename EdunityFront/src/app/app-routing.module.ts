@@ -15,7 +15,8 @@ const routes: Routes = [
   {path: "cadastrar", component: CadastrarComponent},
   {path: "sobre", component:SobreComponent},
   {path: "feed", component:FeedComponent},
-  {path: "tema", component:TemaComponent},
+  {path: "tag", component:TemaComponent},
+  {path: "tag/:id", component:TemaComponent},
   {path: "validacao", component:ValidMentorComponent},
   {path: "perfil-edit", component:CRUDUsuarioComponent}
   

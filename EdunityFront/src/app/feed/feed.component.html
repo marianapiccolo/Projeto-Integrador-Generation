@@ -3,12 +3,13 @@
         <div class="col-3">
             <div class="shadow border">
                 <div class="d-flex justify-content-center mt-5">
-                    <img src="../../assets/img/leonardo.jpg" alt="" class="img-fluid rounded-circle" width="89px"
+                    <img src="{{foto}}" alt="" class="img-fluid rounded-circle" width="89px"
                         height="89px">
                 </div>
                 <div class="mt-3 mb-5 text-center">
-                    <h6>Nome completo</h6>
-                    <p class="text-muted">Tipo</p>
+                    <h6>{{nome}}</h6>
+                    <p class="text-muted">@{{usuario}}</p>
+                    <p class="text-muted">{{tipo}}</p>
                     <button class="btn text-white" type="menu" style="background-color: #1A254D;">
                         Ver Perfil
                     </button>
@@ -17,7 +18,7 @@
             <div class="shadow border mt-3">
                 <div class="mt-3 mb-3 text-center">
                     <h6>Veja todas as tags</h6>
-                    <button class="btn text-white" type="menu" style="background-color: #1A254D;" routerLink="/tema">
+                    <button class="btn text-white" type="menu" style="background-color: #1A254D;" routerLink="/tag">
                         Ver tags
                     </button>
                 </div>
@@ -27,7 +28,7 @@
 
         <div class="col-6 shadow border d-flex align-items-center mx-3" style="height: 144px">
             <div class="d-flex justify-content-start">
-                <img src="../../assets/img/leonardo.jpg" alt="" class="img-fluid rounded-circle" width="34px"
+                <img src="{{foto}}" alt="" class="img-fluid rounded-circle" width="34px"
                     height="34px">
             </div>
             <button class="btn btn-outline-secondary btn-block mx-2 text-left" type="submit" style="border-radius: 21px;" data-toggle="modal" data-target="#ExemploModalCentralizado">
@@ -61,11 +62,11 @@
                 <div class="form-group">
                     <select class="form-control" id="exampleFormControlSelect1">
                         <option>Selecione um tema</option>
-                        <option>Tema 1</option>
+                        <option *ngFor="let item of listaTemas">{{item.categoria}}</option>
                     </select>
                 </div>
                 <p>
-                    Não encontrou um tema adequado?<a class="ml-2" routerLink="/tema" data-dismiss="modal">Cadastre um
+                    Não encontrou um tema adequado?<a class="ml-2" routerLink="/tag" data-dismiss="modal">Cadastre um
                         novo!</a>
                 </p>
             </div>
