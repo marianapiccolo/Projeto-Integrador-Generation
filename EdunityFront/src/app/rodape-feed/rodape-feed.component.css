@@ -1,0 +1,10 @@
+ul.lista {
+    list-style: none;
+}
+
+a {
+    color: gray;
+    margin-left: 13px;
+    margin-right: 13px;
+    font-size: 12pt;
+}

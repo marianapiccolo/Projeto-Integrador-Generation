@@ -31,6 +31,10 @@ border-radius: 5px;
 .mt-7p {
     margin-top: 7%;
   }
+
+  .border{
+    border-radius: 21px;
+}
   
  /**animação**/ 
   .imagem1{
