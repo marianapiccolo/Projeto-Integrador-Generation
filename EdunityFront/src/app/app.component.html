@@ -1,4 +1,5 @@
+<app-menu *ngIf="auth.logado()"></app-menu>
+
 <router-outlet></router-outlet>
 
-<app-rodape></app-rodape>
-
+<app-rodape *ngIf="auth.logado() == false"></app-rodape>
