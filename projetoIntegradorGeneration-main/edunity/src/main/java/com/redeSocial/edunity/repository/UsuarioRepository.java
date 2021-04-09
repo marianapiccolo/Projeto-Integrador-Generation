@@ -11,5 +11,5 @@ import com.redeSocial.edunity.model.Usuario;
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
 	public List<Usuario> findAllByNomeContainingIgnoreCase (String nome);
-	public Optional<Usuario> findByNome (String nome);
+	public Optional<Usuario> findByUsuario (String usuario);
 }

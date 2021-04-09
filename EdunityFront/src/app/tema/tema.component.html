@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid">
   <div class="row">
     <div class="col-3 my-5">
       <div class="text-center shadow border">
@@ -14,16 +14,18 @@
           <table class="table mb-3">
             <thead>
               <tr>
-                <th scope="col">Descrição</th>
+                <th scope="col">Categoria</th>
+                <th scope="col">Tags</th>
                 <th scope="col">Modificar</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Mark</td>
+              <tr *ngFor="let item of listaTemas">
+                <td>{{item.categoria}}</td>
+                <td>{{item.tags}}</td>
                 <td>
-                  <button class="btn text-white btn-block" style="background-color: #1A254D;" data-toggle="modal" data-target="#editarTag">Editar Tema</button>
-                  <button class="btn btn-danger btn-block" data-toggle="modal" data-target="#apagarTag">Apagar Tema</button>
+                  <button class="btn text-white btn-block" style="background-color: #1A254D;" data-toggle="modal" data-target="#editarTag" [routerLink]="['/tag', item.id]">Editar Tema</button>
+                  <button class="btn btn-danger btn-block" data-toggle="modal" data-target="#apagarTag" [routerLink]="['/tag', item.id]">Apagar Tema</button>
                 </td>
               </tr>
             </tbody>
@@ -37,9 +39,9 @@
 <!-- Modal Criar -->
 <div class="modal fade border" data-backdrop="static" id="criarTag" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="TituloModalCentralizado">Criar Tag</h5>
+    <div class="modal-content" >
+      <div class="modal-header" style="background-color: #1A254D;">
+        <h5 class="modal-title text-white" id="TituloModalCentralizado">Criar Tag</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -47,16 +49,16 @@
       <div class="modal-body">
         <form>
           <div class="form-group">
-            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Digite o nome da tag">
+            <input [(ngModel)]="tema.categoria" name="categoria" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Digite o nome da tag">
           </div>
           <div class="form-group">
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <textarea [(ngModel)]="tema.tags" name="tags" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
           </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-        <button type="button" class="btn text-white" style="background-color: #1A254D;">Criar</button>
+        <button type="button" class="btn text-muted" data-dismiss="modal">Fechar</button>
+        <button type="button" class="btn text-white" style="background-color: #1A254D;" (click)="cadastrar()">Criar</button>
       </div>
     </div>
   </div>
@@ -66,25 +68,25 @@
 <div class="modal fade border" data-backdrop="static" id="editarTag" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header" style="background-color: #c0c0c0;">
         <h5 class="modal-title" id="TituloModalCentralizado">Editar Tag</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+        <button type="button" class="close" routerLink="/tag" data-dismiss="modal" aria-label="Fechar">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <form>
           <div class="form-group">
-            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Digite o nome da tag">
+            <input type="text" [(ngModel)]="tema.categoria" name="categoria" class="form-control" id="exampleFormControlInput1" placeholder="Digite o nome da tag">
           </div>
           <div class="form-group">
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <textarea class="form-control" [(ngModel)]="tema.tags" name="tags" id="exampleFormControlTextarea1" row="3"></textarea>
           </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-        <button type="button" class="btn text-white" style="background-color: #1A254D;">Salvar Alterações</button>
+        <button type="button" class="btn text-muted" data-dismiss="modal" routerLink="/tag">Fechar</button>
+        <button type="button" class="btn text-white" style="background-color: #1A254D;" data-dismiss="modal" (click)="editar()">Salvar Alterações</button>
       </div>
     </div>
   </div>
@@ -94,15 +96,18 @@
 <div class="modal fade border" data-backdrop="static" id="apagarTag" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="TituloModalCentralizado">Apagar Tag</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+      <div class="modal-header bg-danger">
+        <h5 class="modal-title text-white" id="TituloModalCentralizado">Apagar Tag</h5>
+        <button type="button" class="close" routerLink="/tag" data-dismiss="modal" aria-label="Fechar">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+      <div class="modal-body">
+        <p>Tem certeza que deseja apagar a tag "{{tema.categoria}}"?</p>
+      </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-        <button type="button" class="btn text-white btn-danger">Apagar</button>
+        <button type="button" class="btn text-muted" data-dismiss="modal" routerLink="/tag">Fechar</button>
+        <button type="button" class="btn text-white btn-danger" data-dismiss="modal" (click)="deletar()">Apagar</button>
       </div>
     </div>
   </div>
