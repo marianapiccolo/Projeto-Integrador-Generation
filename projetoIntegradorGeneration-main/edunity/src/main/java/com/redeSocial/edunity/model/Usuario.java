@@ -22,7 +22,7 @@ public class Usuario {
 	private @NotNull String senha;
 	private String foto;
 	private String tipo;
-	private @OneToMany (mappedBy = "usuario", cascade = CascadeType.REMOVE) @JsonIgnoreProperties("Usuario") List<Postagem> postagem;
+	private @OneToMany (mappedBy = "usuario", cascade = CascadeType.REMOVE) @JsonIgnoreProperties("usuario") List<Postagem> postagem;
 
 	public long getId() {
 		return id;
