@@ -9,7 +9,12 @@
           <h6>{{ nome }}</h6>
           <p class="text-muted">@{{ usuario }}</p>
           <p class="text-muted">{{ tipo }}</p>
-          <button class="btn text-white" type="menu" style="background-color: #1a254d">
+          <button
+            class="btn text-white"
+            type="menu"
+            style="background-color: #1a254d"
+            routerLink="/perfil-edit"
+          >
             Ver Perfil
           </button>
         </div>
@@ -111,7 +116,17 @@
             id="exampleFormControlTextarea1" rows="3" placeholder="Compartilhe o que você está pensando!"></textarea>
         </div>
         <div class="form-group">
+<<<<<<< HEAD
           <select [(ngModel)]="idTema" (change)="findByIdTema()" class="form-control" id="exampleFormControlSelect1">
+=======
+          <select
+            [(ngModel)]="idTema"
+            name = "tema"
+            (change)="findByIdTema()"
+            class="form-control"
+            id="exampleFormControlSelect1"
+          >
+>>>>>>> 346c151c12b9c17d8cc6b656c3bc8b4534dd1c31
             <option>Selecione um tema</option>
             <option value="{{ item.id }}" *ngFor="let item of listaTemas">
               {{ item.categoria }}
@@ -178,7 +193,17 @@
               id="exampleFormControlTextarea1" row="3"></textarea>
           </div>
           <div class="form-group">
+<<<<<<< HEAD
             <select [(ngModel)]="idTema" (change)="findByIdTema()" class="form-control" id="exampleFormControlSelect1">
+=======
+            <select
+              [(ngModel)]="idTema"
+              name = "tema"
+              (change)="findByIdTema()"
+              class="form-control"
+              id="exampleFormControlSelect1"
+            >
+>>>>>>> 346c151c12b9c17d8cc6b656c3bc8b4534dd1c31
               <option>Selecione um tema</option>
               <option *ngFor="let item of listaTemas" value="{{ item.id }}" >
                 {{ item.categoria }}
