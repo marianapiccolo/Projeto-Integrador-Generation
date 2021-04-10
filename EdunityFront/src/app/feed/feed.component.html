@@ -1,79 +1,187 @@
 <div class="container-fluid">
-    <div class="row mt-5">
-        <div class="col-3">
-            <div class="shadow border">
-                <div class="d-flex justify-content-center mt-5">
-                    <img src="{{foto}}" alt="" class="img-fluid rounded-circle" width="89px"
-                        height="89px">
-                </div>
-                <div class="mt-3 mb-5 text-center">
-                    <h6>{{nome}}</h6>
-                    <p class="text-muted">@{{usuario}}</p>
-                    <p class="text-muted">{{tipo}}</p>
-                    <button class="btn text-white" type="menu" style="background-color: #1A254D;">
-                        Ver Perfil
-                    </button>
-                </div>
-            </div>
-            <div class="shadow border mt-3">
-                <div class="mt-3 mb-3 text-center">
-                    <h6>Veja todas as tags</h6>
-                    <button class="btn text-white" type="menu" style="background-color: #1A254D;" routerLink="/tag">
-                        Ver tags
-                    </button>
-                </div>
-            </div>
-            <app-rodape-feed></app-rodape-feed>
+  <div class="row mt-5">
+    <div class="col-3">
+      <div class="shadow border">
+        <div class="d-flex justify-content-center mt-5">
+          <img
+            src="{{ foto }}"
+            alt=""
+            class="img-fluid rounded-circle"
+            width="89px"
+            height="89px"
+          />
         </div>
-
-        <div class="col-6 shadow border d-flex align-items-center mx-3" style="height: 144px">
-            <div class="d-flex justify-content-start">
-                <img src="{{foto}}" alt="" class="img-fluid rounded-circle" width="34px"
-                    height="34px">
-            </div>
-            <button class="btn btn-outline-secondary btn-block mx-2 text-left" type="submit" style="border-radius: 21px;" data-toggle="modal" data-target="#ExemploModalCentralizado">
-                Compartilhe algo conosco!
-            </button>
+        <div class="mt-3 mb-5 text-center">
+          <h6>{{ nome }}</h6>
+          <p class="text-muted">@{{ usuario }}</p>
+          <p class="text-muted">{{ tipo }}</p>
+          <button
+            class="btn text-white"
+            type="menu"
+            style="background-color: #1a254d"
+          >
+            Ver Perfil
+          </button>
         </div>
+      </div>
+      <div class="shadow border mt-3">
+        <div class="mt-3 mb-3 text-center">
+          <h6>Veja todas as tags</h6>
+          <button
+            class="btn text-white"
+            type="menu"
+            style="background-color: #1a254d"
+            routerLink="/tag"
+          >
+            Ver tags
+          </button>
+        </div>
+      </div>
+      <app-rodape-feed></app-rodape-feed>
     </div>
+    <div class="col-6">
+      <div
+        class="shadow border d-flex align-items-center mx-3"
+        style="height: 144px"
+      >
+        <div class="d-flex justify-content-start">
+          <img
+            src="{{ foto }}"
+            alt=""
+            class="img-fluid rounded-circle"
+            width="34px"
+            height="34px"
+          />
+        </div>
+        <button
+          class="btn btn-outline-secondary btn-block mx-2 text-left"
+          type="submit"
+          style="border-radius: 21px"
+          data-toggle="modal"
+          data-target="#ExemploModalCentralizado"
+        >
+          Compartilhe algo conosco!
+        </button>
+      </div>
+      <div *ngFor="let post of listaPostagens">
+        <div class="shadow border" style="">
+          <div class="row d-flex align-items-center">
+            <img
+              src="{{ post.usuario.foto }}"
+              alt=""
+              class="img-fluid rounded-circle"
+              width="34px"
+              height="34px"
+            />
+            <div class="col">
+              <p>{{ post.usuario.nome }}</p>
+              <p>{{ post.usuario.tipo }}</p>
+            </div>
+          </div>
+          <div class="row">
+            <h5>{{ post.titulo }}</h5>
+          </div>
+          <div class="row">
+            <h6>{{ post.conteudo }}</h6>
+          </div>
+          <div class="small">
+            <div class="row">
+              <p>Tema: {{ post.tema.categoria }}</p>
+            </div>
+            <div class="row">
+              <p>
+                Publicado em: {{ post.date | date: "dd/MM/yyyy" }} às
+                {{ post.date | date: "HH:mm" }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="ExemploModalCentralizado" tabindex="-1" role="dialog"
-    aria-labelledby="TituloModalCentralizado" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header" style="background-color: #1A254D;">
-                <h5 class="modal-title text-white" id="TituloModalCentralizado">Criar publicação</h5>
-                <button type="button" class="close" style="background-color: #1A254D;" data-dismiss="modal"
-                    aria-label="Fechar">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <input class="form-control" id="exampleFormControlTextarea1" type="text"
-                        placeholder="Escreva um título">
-                </div>
-                <div class="form-group">
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                        placeholder="Compartilhe o que você está pensando!"></textarea>
-                </div>
-                <div class="form-group">
-                    <select class="form-control" id="exampleFormControlSelect1">
-                        <option>Selecione um tema</option>
-                        <option *ngFor="let item of listaTemas">{{item.categoria}}</option>
-                    </select>
-                </div>
-                <p>
-                    Não encontrou um tema adequado?<a class="ml-2" routerLink="/tag" data-dismiss="modal">Cadastre um
-                        novo!</a>
-                </p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn text-muted" data-dismiss="modal">Fechar</button>
-                <button type="button" class="btn text-white" style="background-color: #1A254D;">Publicar</button>
-            </div>
+<div
+  class="modal fade"
+  id="ExemploModalCentralizado"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="TituloModalCentralizado"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: #1a254d">
+        <h5 class="modal-title text-white" id="TituloModalCentralizado">
+          Criar publicação
+        </h5>
+        <button
+          type="button"
+          class="close"
+          style="background-color: #1a254d"
+          data-dismiss="modal"
+          aria-label="Fechar"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <input
+            [(ngModel)]="postagem.titulo"
+            name="titulo"
+            class="form-control"
+            id="exampleFormControlTextarea1"
+            type="text"
+            placeholder="Escreva um título"
+          />
         </div>
+        <div class="form-group">
+          <textarea
+            [(ngModel)]="postagem.conteudo"
+            name="conteudo"
+            class="form-control"
+            id="exampleFormControlTextarea1"
+            rows="3"
+            placeholder="Compartilhe o que você está pensando!"
+          ></textarea>
+        </div>
+        <div class="form-group">
+          <select
+            [(ngModel)]="idTema"
+            (change)="findByIdTema()"
+            class="form-control"
+            id="exampleFormControlSelect1"
+          >
+            <option>Selecione um tema</option>
+            <option value="{{ item.id }}" *ngFor="let item of listaTemas">
+              {{ item.categoria }}
+            </option>
+          </select>
+        </div>
+        <p>
+          Não encontrou um tema adequado?<a
+            class="ml-2"
+            routerLink="/tag"
+            data-dismiss="modal"
+            >Cadastre um novo!</a
+          >
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn text-muted" data-dismiss="modal">
+          Fechar
+        </button>
+        <button
+          (click)="publicar()"
+          type="button"
+          class="btn text-white"
+          style="background-color: #1a254d"
+        >
+          Publicar
+        </button>
+      </div>
     </div>
+  </div>
 </div>
