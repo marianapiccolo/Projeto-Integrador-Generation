@@ -19,6 +19,7 @@
             class="btn text-white"
             type="menu"
             style="background-color: #1a254d"
+            routerLink="/perfil-edit"
           >
             Ver Perfil
           </button>
@@ -169,6 +170,7 @@
         <div class="form-group">
           <select
             [(ngModel)]="idTema"
+            name = "tema"
             (change)="findByIdTema()"
             class="form-control"
             id="exampleFormControlSelect1"
@@ -247,6 +249,7 @@
           <div class="form-group">
             <select
               [(ngModel)]="idTema"
+              name = "tema"
               (change)="findByIdTema()"
               class="form-control"
               id="exampleFormControlSelect1"

@@ -25,6 +25,11 @@ public class UsuarioService {
 		return repository.save(usuario);
 	}
 	
+	public Usuario getUsuarioById (Long id) {
+		Optional<Usuario> usuario = repository.findById(id);
+		return usuario.get();
+	}
+	
 	public Optional<UserLogin> logar (Optional<UserLogin> user) {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		Optional<Usuario> usuario = repository.findByUsuario(user.get().getUsuario());
