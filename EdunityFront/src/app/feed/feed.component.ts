@@ -26,6 +26,7 @@ export class FeedComponent implements OnInit {
   idTema: number
   listaPostagens: Postagem[]
   postagem: Postagem = new Postagem()
+  edtPostagem: Postagem = new Postagem()
   idPostagem: number
   user: User = new User()
   dataHora: Date 
@@ -72,7 +73,7 @@ export class FeedComponent implements OnInit {
 
   findByIdPostagem(id: number){
     this.postagemService.getByIdPostagem(id).subscribe((resp: Postagem) => {
-      this.postagem = resp
+      this.edtPostagem = resp
     })
   }
 
@@ -101,10 +102,14 @@ export class FeedComponent implements OnInit {
 
   atualizar(){
     this.tema.id = this.idTema
-    this.postagem.tema = this.tema
-    this.postagem.date = this.dataHora
-    this.postagemService.putPostagem(this.postagem).subscribe((resp: Postagem)=> {
-      this.postagem = resp 
+    this.edtPostagem.tema = this.tema
+    this.edtPostagem.date = this.dataHora
+
+    this.user.id = this.idUser
+    this.edtPostagem.usuario = this.user
+    
+    this.postagemService.putPostagem(this.edtPostagem).subscribe((resp: Postagem)=> {
+      this.edtPostagem = resp 
       alert("Postagem atualizada!")
       this.router.navigate(["/feed"])
     })

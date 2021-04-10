@@ -25,7 +25,7 @@ public class Postagem {
 	public class Postagem{
 		public static String uploadDirectory = System.getProperty("")
 	}*/
-	private @NotNull @Size(min = 10, max = 1000) String conteudo;
+	private @NotNull @Size(min = 2, max = 1000) String conteudo;
 	private @ManyToOne @JsonIgnoreProperties ("postagem") Tema tema;
 	private @ManyToOne @JsonIgnoreProperties ("postagem") Usuario usuario;
 
