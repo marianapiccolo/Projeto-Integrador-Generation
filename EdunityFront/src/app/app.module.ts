@@ -14,7 +14,8 @@ import { FeedComponent } from './feed/feed.component';
 import { RodapeFeedComponent } from './rodape-feed/rodape-feed.component';
 import { CRUDUsuarioComponent } from './crudusuario/crudusuario.component';
 import { TemaComponent } from './tema/tema.component';
-import { ValidMentorComponent } from './valid-mentor/valid-mentor.component'
+import { ValidMentorComponent } from './valid-mentor/valid-mentor.component';
+
 
 
 
@@ -31,6 +32,7 @@ import { ValidMentorComponent } from './valid-mentor/valid-mentor.component'
     CRUDUsuarioComponent,
     TemaComponent,
     ValidMentorComponent
+    
 
   ],
   imports: [
