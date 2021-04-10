@@ -5,5 +5,5 @@ export class Tema {
     public categoria: string
     public tags: string
     public descricao: string
-    public postagem: Postagem
+    public postagem: Postagem[]
 }

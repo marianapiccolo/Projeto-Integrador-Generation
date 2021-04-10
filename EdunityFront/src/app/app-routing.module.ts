@@ -19,7 +19,8 @@ const routes: Routes = [
   {path: "tag", component:TemaComponent},
   {path: "tag/:id", component:TemaComponent},
   {path: "validacao", component:ValidMentorComponent},
-  {path: "perfil-edit", component:CRUDUsuarioComponent}
+  {path: "perfil-edit", component:CRUDUsuarioComponent},
+  {path: "perfil-edit/:id", component:CRUDUsuarioComponent}
   
 ];
 
