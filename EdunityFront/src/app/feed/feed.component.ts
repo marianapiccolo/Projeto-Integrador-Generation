@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
 import { Postagem } from '../model/Postagem';
 import { Tema } from '../model/Tema';
@@ -26,14 +26,17 @@ export class FeedComponent implements OnInit {
   idTema: number
   listaPostagens: Postagem[]
   postagem: Postagem = new Postagem()
+  idPostagem: number
   user: User = new User()
-
+  dataHora: Date 
 
   constructor(
     public auth: AuthService,
     private router: Router,
     private temaService: TemaService,
-    private postagemService: PostagemService
+    private postagemService: PostagemService,
+    private route: ActivatedRoute
+    
   ) { }
 
   ngOnInit() {
@@ -44,6 +47,9 @@ export class FeedComponent implements OnInit {
 
     this.findAllTemas()
     this.findAllPostagens()
+
+    this.idPostagem = this.route.snapshot.params["id"]
+    this.findByIdPostagem(this.idPostagem)
   }
 
   findAllTemas() {
@@ -64,6 +70,12 @@ export class FeedComponent implements OnInit {
     })
   }
 
+  findByIdPostagem(id: number){
+    this.postagemService.getByIdPostagem(id).subscribe((resp: Postagem) => {
+      this.postagem = resp
+    })
+  }
+
   publicar(){
     this.tema.id = this.idTema
     this.postagem.tema = this.tema
@@ -79,6 +91,26 @@ export class FeedComponent implements OnInit {
     })
 
   }
+
+  deletar(){
+    this.postagemService.deletePostagem(this.idPostagem).subscribe(() =>{
+      alert("Postagem apagada!")
+      this.router.navigate(["/feed"])
+    })
+  }
+
+  atualizar(){
+    this.tema.id = this.idTema
+    this.postagem.tema = this.tema
+    this.postagem.date = this.dataHora
+    this.postagemService.putPostagem(this.postagem).subscribe((resp: Postagem)=> {
+      this.postagem = resp 
+      alert("Postagem atualizada!")
+      this.router.navigate(["/feed"])
+    })
+  }
+
+  
   
 
 }

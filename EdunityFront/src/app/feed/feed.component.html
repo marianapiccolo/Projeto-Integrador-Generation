@@ -64,35 +64,54 @@
         </button>
       </div>
       <div *ngFor="let post of listaPostagens">
-        <div class="shadow border" style="height: auto">
-          <div class="row d-flex align-items-center">
-            <img
-              src="{{ post.usuario.foto }}"
-              alt=""
-              class="img-fluid rounded-circle"
-              width="34px"
-              height="34px"
-            />
-            <div class="col">
-              <p>{{ post.usuario.nome }}</p>
-              <p>{{ post.usuario.tipo }}</p>
+        <div class="shadow border m-3" style="height: auto">
+          <div class="col m-3">
+            <div class="row d-flex align-items-center">
+              <img
+                src="{{ post.usuario.foto }}"
+                alt=""
+                class="img-fluid rounded-circle"
+                width="34px"
+                height="34px"
+              />
+              <div class="col">
+                <p>{{ post.usuario.nome }}</p>
+                <p>{{ post.usuario.tipo }}</p>
+              </div>
+              <div>
+                
+              <!--Dropdown-->
+
+                <div class="col d-flex justify-content-end align-items-start">
+                  <div class="dropdown">
+                    <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      
+                    </a>
+                  
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                      <a class="dropdown-item" data-toggle="modal" data-target="#editarPostagem" [routerLink]="['/feed', post.id]">Editar</a>
+                      <a class="dropdown-item" data-toggle="modal" data-target="#apagarPostagem" [routerLink]="['/feed', post.id]">Apagar</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <h5>{{ post.titulo }}</h5>
-          </div>
-          <div class="row">
-            <h6>{{ post.conteudo }}</h6>
-          </div>
-          <div class="small">
             <div class="row">
-              <p>Tema: {{ post.tema.categoria }}</p>
+              <h5>{{ post.titulo }}</h5>
             </div>
             <div class="row">
-              <p>
-                Publicado em: {{ post.date | date: "dd/MM/yyyy" }} às
-                {{ post.date | date: "HH:mm" }}
-              </p>
+              <p>{{ post.conteudo }}</p>
+            </div>
+            <div class="small">
+              <div class="row">
+                <p>Tema: {{ post.tema.categoria }}</p>
+              </div>
+              <div class="row">
+                <p>
+                  Publicado em: {{ post.date | date: "dd/MM/yyyy" }} às
+                  {{ post.date | date: "HH:mm" }}
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -181,6 +200,68 @@
         >
           Publicar
         </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Apagar -->
+<div class="modal fade border" data-backdrop="static" id="apagarPostagem" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-danger">
+        <h5 class="modal-title text-white" id="TituloModalCentralizado">Apagar Postagem</h5>
+        <button type="button" class="close" routerLink="/feed" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Tem certeza que deseja apagar a postagem "{{postagem.titulo}}"?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn text-muted" data-dismiss="modal" routerLink="/feed">Fechar</button>
+        <button type="button" class="btn text-white btn-danger" data-dismiss="modal" (click)="deletar()">Apagar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Editar -->
+<div class="modal fade border" data-backdrop="static" id="editarPostagem" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: #c0c0c0;">
+        <h5 class="modal-title" id="TituloModalCentralizado">Editar Postagem</h5>
+        <button type="button" class="close" routerLink="/feed" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <input type="text" [(ngModel)]="postagem.titulo" name="titulo" class="form-control" id="exampleFormControlInput1" placeholder="Digite o titulo">
+          </div>
+          <div class="form-group">
+            <textarea class="form-control" [(ngModel)]="postagem.conteudo" name="conteudo" id="exampleFormControlTextarea1" row="3"></textarea>
+          </div>
+          <div class="form-group">
+            <select
+              [(ngModel)]="idTema"
+              (change)="findByIdTema()"
+              class="form-control"
+              id="exampleFormControlSelect1"
+            >
+              <option>Selecione um tema</option>
+              <option value="{{ item.id }}" *ngFor="let item of listaTemas">
+                {{ item.categoria }}
+              </option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn text-muted" data-dismiss="modal" routerLink="/feed">Fechar</button>
+        <button type="button" class="btn text-white" style="background-color: #1A254D;" data-dismiss="modal" (click)="atualizar()">Salvar Alterações</button>
       </div>
     </div>
   </div>
