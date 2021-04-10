@@ -67,6 +67,7 @@ export class FeedComponent implements OnInit {
   publicar(){
     this.tema.id = this.idTema
     this.postagem.tema = this.tema
+    
     this.user.id = this.idUser
     this.postagem.usuario = this.user
 
