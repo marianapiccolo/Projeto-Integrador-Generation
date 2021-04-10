@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Subscriber } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
 import { Postagem } from '../model/Postagem';
 import { Tema } from '../model/Tema';
@@ -29,7 +28,7 @@ export class FeedComponent implements OnInit {
   postagem: Postagem = new Postagem()
   idPostagem: number
   user: User = new User()
-
+  dataHora: Date 
 
   constructor(
     public auth: AuthService,
@@ -95,6 +94,17 @@ export class FeedComponent implements OnInit {
   deletar(){
     this.postagemService.deletePostagem(this.idPostagem).subscribe(() =>{
       alert("Postagem apagada!")
+      this.router.navigate(["/feed"])
+    })
+  }
+
+  atualizar(){
+    this.tema.id = this.idTema
+    this.postagem.tema = this.tema
+    this.postagem.date = this.dataHora
+    this.postagemService.putPostagem(this.postagem).subscribe((resp: Postagem)=> {
+      this.postagem = resp 
+      alert("Postagem atualizada!")
       this.router.navigate(["/feed"])
     })
   }
