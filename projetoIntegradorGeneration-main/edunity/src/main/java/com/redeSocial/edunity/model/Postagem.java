@@ -13,6 +13,10 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+/**
+ * @author Windows 10
+ *
+ */
 @Entity
 @Table(name = "postagem")
 public class Postagem {
@@ -26,8 +30,8 @@ public class Postagem {
 		public static String uploadDirectory = System.getProperty("")
 	}*/
 	private @NotNull @Size(min = 2, max = 1000) String conteudo;
-	private @ManyToOne @JsonIgnoreProperties ("postagem") Tema tema;
-	private @ManyToOne @JsonIgnoreProperties ("postagem") Usuario usuario;
+	private @ManyToOne @JsonIgnoreProperties("postagem") Tema tema;
+	private @ManyToOne @JsonIgnoreProperties("postagem") Usuario usuario;
 
 	public long getId() {
 		return id;
@@ -76,4 +80,5 @@ public class Postagem {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}	
+	
 }

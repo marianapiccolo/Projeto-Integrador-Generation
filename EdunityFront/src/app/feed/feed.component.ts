@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment.prod';
 import { Postagem } from '../model/Postagem';
 import { Tema } from '../model/Tema';
 import { User } from '../model/User';
+import { AlertasService } from '../service/alerta.service';
 import { AuthService } from '../service/auth.service';
 import { PostagemService } from '../service/postagem.service';
 import { TemaService } from '../service/tema.service';
@@ -29,20 +30,26 @@ export class FeedComponent implements OnInit {
   edtPostagem: Postagem = new Postagem()
   idPostagem: number
   user: User = new User()
-  dataHora: Date 
+  dataHora: Date
+  
+  key: string = "post.date"
+  reverse = true
 
   constructor(
     public auth: AuthService,
     private router: Router,
     private temaService: TemaService,
     private postagemService: PostagemService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private alerta: AlertasService
     
   ) { }
 
   ngOnInit() {
+    window.scroll (0,0)
+    
     if (environment.token == ""){
-      alert("Sua seção expirou, faça o login novamente.")
+      this.alerta.showAlertDanger("Sua seção expirou, faça o login novamente.")
       this.router.navigate(["/login"])
     }
 
@@ -86,16 +93,20 @@ export class FeedComponent implements OnInit {
 
     this.postagemService.postPostagem(this.postagem).subscribe((resp: Postagem)=>{
       this.postagem = resp
-      alert("Postagem feita com sucesso!")
+      this.alerta.showAlertSuccess("Postagem feita com sucesso!")
       this.postagem = new Postagem()
       this.findAllPostagens()
+    }, erro => {
+      if(erro.status == 500) {
+        this.alerta.showAlertDanger("Preencha todos os campos!")
+      }
     })
 
   }
 
   deletar(){
     this.postagemService.deletePostagem(this.idPostagem).subscribe(() =>{
-      alert("Postagem apagada!")
+      this.alerta.showAlertDanger("Postagem apagada!")
       this.router.navigate(["/feed"])
     })
   }
@@ -110,12 +121,30 @@ export class FeedComponent implements OnInit {
     
     this.postagemService.putPostagem(this.edtPostagem).subscribe((resp: Postagem)=> {
       this.edtPostagem = resp 
-      alert("Postagem atualizada!")
+      this.alerta.showAlertInfo("Postagem atualizada!")
       this.router.navigate(["/feed"])
+    }, erro => {
+      if(erro.status == 500) {
+        this.alerta.showAlertDanger("Preencha todos os campos!")
+      }
     })
   }
 
-  
-  
+  setOrder(event: any) {
+    if(event.target.value == "recentes") {
+      this.key = "date";
+      this.reverse = true
+    } else if (event.target.value == "antigos") {
+      this.key = "date";
+      this.reverse = false
+    } else if (event.target.value == "titulo") {
+      this.key = "titulo";
+      this.reverse = false
+    } else if (event.target.value == "tema") {
+      this.key = "tema.categoria";
+      this.reverse = false
+    }
+    this.findAllPostagens()
+  }
 
 }

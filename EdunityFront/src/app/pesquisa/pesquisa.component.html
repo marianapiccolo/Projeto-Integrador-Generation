@@ -1,0 +1,117 @@
+<div class="container fontWork">
+
+    <div class="row">
+        <div class="col-3 mt-5">
+            <div class="card cardSet" style="width: auto; height: auto; border-radius: 21px;">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <div class="nav flex-column nav-pills m-3" id="v-pills-tab" role="tablist"
+                            aria-orientation="vertical">
+                            <a (click)="avisoNuloTema()" class="btn active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home"
+                                role="tab" aria-controls="v-pills-home" aria-selected="true">Tags</a>
+                            <a (click)="avisoNuloPost()" class="btn" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile"
+                                role="tab" aria-controls="v-pills-profile" aria-selected="false">Postagens</a>
+                            <a (click)="avisoNuloUser()" class="btn" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages"
+                                role="tab" aria-controls="v-pills-messages" aria-selected="false">Pessoas</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6 mt-5">
+            <div class="tab-content" id="v-pills-tabContent">
+                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
+                    aria-labelledby="v-pills-home-tab">
+                    <div class="shadow border">
+                        <h4 class="mt-3 text-center"><i class="fa fa-lightbulb-o mr-2" aria-hidden="true"></i>Tags
+                            Cadastradas</h4>
+                        <div class="mx-3">
+                            <table class="table mb-3">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Categoria</th>
+                                        <th scope="col">Tags</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of listaTemas">
+                                        <td>{{item.categoria}}</td>
+                                        <td>{{item.tags}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                    <div *ngFor="let post of listaPostagens">
+                        <div class="shadow border m-3" style="height: auto">
+                            <div class="col m-3">
+                                <div class="row">
+                                    <div class="d-flex align-items-center">
+                                        <img src="{{ post.usuario.foto }}" alt="" class="img-fluid rounded-circle m-0"
+                                            width="34px" height="34px" />
+                                        <div class="col">
+                                            <p class="m-0">{{ post.usuario.nome }}</p>
+                                            <small class="text-muted m-0">
+                                                <div>
+                                                    @{{post.usuario.usuario}}
+                                                </div>
+                                                <div>
+                                                    {{post.usuario.tipo}}
+                                                </div>
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <h5>{{ post.titulo }}</h5>
+                                </div>
+                                <div class="row">
+                                    <p>{{ post.conteudo }}</p>
+                                </div>
+                                <div class="small">
+                                    <div class="row">
+                                        <p>Tema: {{ post.tema.categoria }}</p>
+                                    </div>
+                                    <div class="row">
+                                        <p>
+                                            Publicado em: {{ post.date | date: "dd/MM/yyyy" }} às
+                                            {{ post.date | date: "HH:mm" }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                    <div *ngFor="let item of listaUsuario">
+                        <div class="card cardSet mb-3" style="width: auto; height: auto; border-radius: 21px;">
+                            <div class="my-auto d-flex bd-highlight">
+                                <div class="col m-3">
+                                    <div class="row d-flex align-items-center">
+                                        <img src="{{item.foto}}" alt="Foto perfil" class="rounded-circle" width="55px"
+                                            height="55px">
+                                        <div class="col">
+                                            <p class="m-0">{{ item.nome }}</p>
+                                            <small class="text-muted m-0">
+                                                <div>
+                                                    @{{item.usuario}}
+                                                </div>
+                                                <div>
+                                                    {{item.tipo}}
+                                                </div>
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

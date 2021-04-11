@@ -1,0 +1,132 @@
+<div class="container-fluid m-5">
+    <div class="row">
+        <div class="col-9">
+            <!--Card Usuário-->
+            <div class="card usercard">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12 d-flex justify-content-center">
+                            <div class="text-center">
+                                <img class="fotouser img-fluid rounded-circle" src="{{user.foto}}"
+                                    alt="Foto do Usuárie" />
+                                <h5 class="card-title mt-3">{{user.nome}}</h5>
+                                <div class="text-muted">
+                                    @{{user.usuario}}
+                                </div>
+                                <div class="text-muted card-text">
+                                    {{user.tipo}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--/Card Usuário-->
+
+            <!--Licenças e Certificados-->
+            <div *ngIf = "user.tipo == 'Professor/Mentor'">
+                <div class="container-fluid licenças my-3">
+                    <div class="card-body">
+                        <div class="row">
+                            <p class="card-title" style="width: 38rem">
+                                Licenças e Certificados de {{user.nome}}
+                            </p>
+                            <div class="row my-5">
+                                <div class="col-sm-4">
+                                    <div class="card mr-3">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Certificado</h5>
+                                            <p class="card-text">
+                                                Clique aqui para conferir o certificado.
+                                            </p>
+                                            <a href="#" class="btn btn-primary">Visualizar</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="card mr-3">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Certificado</h5>
+                                            <p class="card-text">
+                                                Clique aqui para conferir o certificado.
+                                            </p>
+                                            <a href="#" class="btn btn-primary">Visualizar</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="card mr-3">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Certificado</h5>
+                                            <p class="card-text">
+                                                Clique aqui para conferir o certificado.
+                                            </p>
+                                            <a href="#" class="btn btn-primary">Visualizar</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--/Licenças e Certificados-->
+
+            <div *ngFor="let post of user.postagem | orderBy: key : reverse">
+                <div class="shadow border my-3" style="height: auto; width: auto">
+                    <div class="col m-3">
+                        <div class="row">
+                            <div class="d-flex align-items-center">
+                                <img src="{{ user.foto }}" alt="" class="img-fluid rounded-circle m-0"
+                                    width="34px" height="34px" />
+                                <div class="col">
+                                    <a [routerLink]="['/perfil', user.usuario]" class="m-0">{{user.nome}}</a>
+                                    <small class="text-muted m-0">
+                                        <div>
+                                            @{{user.usuario}}
+                                        </div>
+                                        <div>
+                                            {{user.tipo}}
+                                        </div>
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <h5>{{ post.titulo }}</h5>
+                        </div>
+                        <div class="row mr-3 mb-2">
+                            {{ post.conteudo }}
+                        </div>
+                        <div class="small">
+                            <div class="row">
+                                <p>Tema: {{ post.tema.categoria }}</p>
+                            </div>
+                            <div class="row">
+                                <p>
+                                    Publicado em: {{ post.date | date: "dd/MM/yyyy" }} às
+                                    {{ post.date | date: "HH:mm" }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-3">
+            <!--Propaganda-->
+
+            <div class="">
+                <table class="propaganda">
+                    <iframe src="https://giphy.com/embed/sDcfxFDozb3bO" frameBorder="0" class="giphy-embed"
+                        allowFullScreen></iframe>
+                    <p><a href="https://giphy.com/gifs/french-week-sDcfxFDozb3bO"></a></p>
+                </table>
+            </div>
+            <app-rodape-feed></app-rodape-feed>
+        </div>
+    </div>
+</div>
+
+<!--/Propaganda-->

@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -54,10 +53,15 @@ public class UsuarioController {
 	public ResponseEntity<Usuario> GetById(@PathVariable long id) {
 		return ResponseEntity.ok(usuarioService.getUsuarioById(id));
 	}
+	
+	@GetMapping ("/perfil/{usuario}")
+	public ResponseEntity<Usuario> getByUsuario (@PathVariable String usuario) {
+		return ResponseEntity.ok(usuarioService.getByUsuario(usuario));
+	}
 
-	@GetMapping("/usuario/{nome}")
-	public ResponseEntity<List<Usuario>> GetByUsuario(@PathVariable String nome) {
-		return ResponseEntity.ok(usuarioRepository.findAllByNomeContainingIgnoreCase(nome));
+	@GetMapping ("/pesquisa/{usuario}")
+	public ResponseEntity<List<Usuario>> getPerfilByUsuario (@PathVariable String usuario) {
+		return ResponseEntity.ok(usuarioService.getPerfilByUsuario(usuario));
 	}
 
 	@DeleteMapping("/{id}")

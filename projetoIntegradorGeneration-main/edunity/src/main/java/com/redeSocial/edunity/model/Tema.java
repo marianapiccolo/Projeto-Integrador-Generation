@@ -18,7 +18,7 @@ public class Tema {
 	private @NotNull @Size(min = 5, max = 50) String categoria;
 	private @NotNull @Size(min = 2, max = 50) String tags;
 	private @Size(min = 10, max = 1000) String descricao;
-	private @OneToMany(mappedBy = "tema", cascade = CascadeType.ALL) @JsonIgnoreProperties ("tema") List<Postagem> postagem;
+	private @OneToMany(mappedBy = "tema", cascade = CascadeType.REMOVE) @JsonIgnoreProperties("tema") List<Postagem> postagem;
 
 	public long getId() {
 		return id;

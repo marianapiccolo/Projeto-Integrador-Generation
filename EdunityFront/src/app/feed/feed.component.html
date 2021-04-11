@@ -9,12 +9,7 @@
           <h6>{{ nome }}</h6>
           <p class="text-muted">@{{ usuario }}</p>
           <p class="text-muted">{{ tipo }}</p>
-          <button
-            class="btn text-white"
-            type="menu"
-            style="background-color: #1a254d"
-            routerLink="/perfil-edit"
-          >
+          <button class="btn text-white" type="menu" style="background-color: #1a254d" routerLink="/perfil-edit">
             Ver Perfil
           </button>
         </div>
@@ -30,50 +25,80 @@
       <app-rodape-feed></app-rodape-feed>
     </div>
     <div class="col-6">
-      <div class="shadow border d-flex align-items-center mx-3" style="height: 144px">
-        <div class="d-flex justify-content-start">
+      <div class="shadow border d-flex align-items-center" style="height: 144px">
+        <div class="d-flex justify-content-start m-3">
           <img src="{{ foto }}" alt="" class="img-fluid rounded-circle" width="34px" height="34px" />
         </div>
-        <button class="btn btn-outline-secondary btn-block mx-2 text-left" type="submit" style="border-radius: 21px"
+        <button class="btn btn-outline-secondary btn-block m-3 text-left" type="submit" style="border-radius: 21px"
           data-toggle="modal" data-target="#ExemploModalCentralizado">
           Compartilhe algo conosco!
         </button>
       </div>
-      <div *ngFor="let post of listaPostagens">
-        <div class="shadow border m-3" style="height: auto">
+      <div class="row mt-2">
+        <div class="col-md-8">
+          <hr>
+        </div>
+        <div class="col-md-4 d-flex align-items-center">
+          <div class="col-3">
+            <small class="row lm">
+              Filtrar por:
+            </small>
+          </div>
+          <div class="col-9">
+            <select class="form-control form-control-sm" (change)="setOrder($event)">
+              <option value="recentes">Recentes</option>
+              <option value="antigos">Antigos</option>
+              <option value="titulo">Titulo</option>
+              <option value="tema">Tema</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div *ngFor="let post of listaPostagens | orderBy: key : reverse">
+        <div class="shadow border my-3" style="height: auto; width: auto">
           <div class="col m-3">
-            <div class="row d-flex align-items-center">
-              <img src="{{ post.usuario.foto }}" alt="" class="img-fluid rounded-circle" width="34px" height="34px" />
-              <div class="col">
-                <p>{{ post.usuario.nome }}</p>
-                <p>{{ post.usuario.tipo }}</p>
+            <div class="row">
+              <div class="d-flex align-items-center">
+                <img src="{{ post.usuario.foto }}" alt="" class="img-fluid rounded-circle m-0" width="34px"
+                  height="34px" />
+                <div class="col">
+                  <a [routerLink]="['/perfil', post.usuario.usuario]" class="m-0">{{ post.usuario.nome }}</a>
+                  <small class="text-muted m-0">
+                    <div>
+                      @{{post.usuario.usuario}}
+                    </div>
+                    <div>
+                      {{post.usuario.tipo}}
+                    </div>
+                  </small>
+                </div>
               </div>
-              <div>
+              <div class="col">
 
                 <!--Dropdown-->
 
-                <div class="col d-flex justify-content-end align-items-start">
-                  <div class="dropdown">
-                    <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
-                      aria-haspopup="true" aria-expanded="false">
-
-                    </a>
-
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                      <a class="dropdown-item" data-toggle="modal" data-target="#editarPostagem"
-                        [routerLink]="['/feed', post.id]">Editar</a>
-                      <a class="dropdown-item" data-toggle="modal" data-target="#apagarPostagem"
-                        [routerLink]="['/feed', post.id]">Apagar</a>
+                <div *ngIf="idUser == post.usuario.id">
+                  <div class="col d-flex justify-content-end align-items-end">
+                    <div class="dropdown">
+                      <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item" data-toggle="modal" data-target="#editarPostagem"
+                          [routerLink]="['/feed', post.id]">Editar</a>
+                        <a class="dropdown-item" data-toggle="modal" data-target="#apagarPostagem"
+                          [routerLink]="['/feed', post.id]">Apagar</a>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="row">
+            <div class="row mt-2">
               <h5>{{ post.titulo }}</h5>
             </div>
-            <div class="row">
-              <p>{{ post.conteudo }}</p>
+            <div class="row mr-3 mb-2">
+              {{ post.conteudo }}
             </div>
             <div class="small">
               <div class="row">
@@ -116,17 +141,8 @@
             id="exampleFormControlTextarea1" rows="3" placeholder="Compartilhe o que você está pensando!"></textarea>
         </div>
         <div class="form-group">
-<<<<<<< HEAD
-          <select [(ngModel)]="idTema" (change)="findByIdTema()" class="form-control" id="exampleFormControlSelect1">
-=======
-          <select
-            [(ngModel)]="idTema"
-            name = "tema"
-            (change)="findByIdTema()"
-            class="form-control"
-            id="exampleFormControlSelect1"
-          >
->>>>>>> 346c151c12b9c17d8cc6b656c3bc8b4534dd1c31
+          <select [(ngModel)]="idTema" name="tema" (change)="findByIdTema()" class="form-control"
+            id="exampleFormControlSelect1">
             <option>Selecione um tema</option>
             <option value="{{ item.id }}" *ngFor="let item of listaTemas">
               {{ item.categoria }}
@@ -193,19 +209,10 @@
               id="exampleFormControlTextarea1" row="3"></textarea>
           </div>
           <div class="form-group">
-<<<<<<< HEAD
-            <select [(ngModel)]="idTema" (change)="findByIdTema()" class="form-control" id="exampleFormControlSelect1">
-=======
-            <select
-              [(ngModel)]="idTema"
-              name = "tema"
-              (change)="findByIdTema()"
-              class="form-control"
-              id="exampleFormControlSelect1"
-            >
->>>>>>> 346c151c12b9c17d8cc6b656c3bc8b4534dd1c31
+            <select [(ngModel)]="idTema" name="tema" (change)="findByIdTema()" class="form-control"
+              id="exampleFormControlSelect1">
               <option>Selecione um tema</option>
-              <option *ngFor="let item of listaTemas" value="{{ item.id }}" >
+              <option *ngFor="let item of listaTemas" value="{{ item.id }}">
                 {{ item.categoria }}
               </option>
             </select>
