@@ -1,0 +1,64 @@
+/**Card do Usuário**/
+.usercard {
+    background: #ffffff;
+    border: 1px solid #c4c4c4;
+    box-sizing: border-box;
+    border-radius: 21px;
+  }
+  
+  /**Foto do Usuário**/
+  .fotouser {
+    width: 89px;
+    height: 89px;
+  }
+  
+  /**Botão**/
+  .button {
+    width: 196px;
+    height: 36px;
+    border-radius: 13px;
+    background-color: #1a254d;
+    color: white;
+  }
+  
+  /**Licenças e Certificados**/
+  .licenças {
+    background: #ffffff;
+    border: 1px solid #c4c4c4;
+    box-sizing: border-box;
+    border-radius: 21px;
+  }
+  
+  /**Modal**/
+  .formatoModal {
+    background: #ffffff;
+    border: 1px solid #c4c4c4;
+    box-sizing: border-box;
+    border-radius: 21px;
+  }
+  
+  /**Forms do Modal**/
+  .f-modal {
+    box-sizing: border-box;
+    border-radius: 5px;
+  }
+  
+  /**Botões Modal**/
+  .b-modal {
+    height: 36px;
+    border-radius: 13px;
+    background-color: #1a254d;
+    color: white;
+  }
+  
+  .b-modal-cancel {
+    height: 36px;
+    border-radius: 13px;
+    background-color: #c0c0c0;
+    color: black;
+  }
+
+  .border{
+    border-radius: 21px;
+}
+  

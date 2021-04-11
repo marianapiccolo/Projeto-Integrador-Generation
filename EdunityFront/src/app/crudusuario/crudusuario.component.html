@@ -7,26 +7,19 @@
           <div class="row">
             <div class="col-8 d-flex justify-content-start">
               <div class="text-left">
-                <img
-                  class="fotouser"
-                  src="{{foto}}"
-                  alt="Foto do Usuárie"
-                />
-                <h6 class="card-title">{{nome}}</h6>
-                <p class="text-muted">{{usuario}}</p>
-                <p class="text-muted card-text">
-                  {{tipo}} - Assunto (Se Professor)
-                </p>
+                <img class="fotouser img-fluid rounded-circle" src="{{foto}}" alt="Foto do Usuárie" />
+                <h5 class="card-title mt-3">{{nome}}</h5>
+                <div class="text-muted">
+                  @{{usuario}}
+                </div>
+                <div class="text-muted card-text">
+                  {{tipo}}
+                </div>
               </div>
             </div>
             <div class="col-4 d-flex align-items-end justify-content-end">
-              <a
-                class="button btn btn-primary pull-right"
-                [routerLink]="['/perfil-edit', idAtivo]"
-                data-toggle="modal"
-                data-target="#EditarPerfil"
-                >Editar Perfil</a
-              >
+              <a class="button btn btn-primary pull-right" [routerLink]="['/perfil-edit', idAtivo]" data-toggle="modal"
+                data-target="#EditarPerfil">Editar Perfil</a>
             </div>
           </div>
         </div>
@@ -34,43 +27,46 @@
       <!--/Card Usuário-->
 
       <!--Licenças e Certificados-->
-      <div class="container-fluid licenças my-3">
-        <div class="card-body">
-          <div class="row">
-            <p class="card-title" style="width: 38rem">
-              Licenças e Certificados
-            </p>
-            <div class="row my-5">
-              <div class="col-sm-4">
-                <div class="card mr-3">
-                  <div class="card-body">
-                    <h5 class="card-title">Certificado</h5>
-                    <p class="card-text">
-                      Clique aqui para conferir o certificado.
-                    </p>
-                    <a href="#" class="btn btn-primary">Visualizar</a>
+
+      <div *ngIf = "tipo == 'Professor/Mentor'">
+        <div class="container-fluid licenças my-3">
+          <div class="card-body">
+            <div class="row">
+              <p class="card-title" style="width: 38rem">
+                Licenças e Certificados
+              </p>
+              <div class="row my-5">
+                <div class="col-sm-4">
+                  <div class="card mr-3">
+                    <div class="card-body">
+                      <h5 class="card-title">Certificado</h5>
+                      <p class="card-text">
+                        Clique aqui para conferir o certificado.
+                      </p>
+                      <a href="#" class="btn btn-primary">Visualizar</a>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="col-sm-4">
-                <div class="card mr-3">
-                  <div class="card-body">
-                    <h5 class="card-title">Certificado</h5>
-                    <p class="card-text">
-                      Clique aqui para conferir o certificado.
-                    </p>
-                    <a href="#" class="btn btn-primary">Visualizar</a>
+                <div class="col-sm-4">
+                  <div class="card mr-3">
+                    <div class="card-body">
+                      <h5 class="card-title">Certificado</h5>
+                      <p class="card-text">
+                        Clique aqui para conferir o certificado.
+                      </p>
+                      <a href="#" class="btn btn-primary">Visualizar</a>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="col-sm-4">
-                <div class="card mr-3">
-                  <div class="card-body">
-                    <h5 class="card-title">Certificado</h5>
-                    <p class="card-text">
-                      Clique aqui para conferir o certificado.
-                    </p>
-                    <a href="#" class="btn btn-primary">Visualizar</a>
+                <div class="col-sm-4">
+                  <div class="card mr-3">
+                    <div class="card-body">
+                      <h5 class="card-title">Certificado</h5>
+                      <p class="card-text">
+                        Clique aqui para conferir o certificado.
+                      </p>
+                      <a href="#" class="btn btn-primary">Visualizar</a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -86,18 +82,76 @@
 
       <div class="">
         <table class="propaganda">
-          <iframe
-            src="https://giphy.com/embed/sDcfxFDozb3bO"
-            frameBorder="0"
-            class="giphy-embed"
-            allowFullScreen
-          ></iframe>
+          <iframe src="https://giphy.com/embed/sDcfxFDozb3bO" frameBorder="0" class="giphy-embed"
+            allowFullScreen></iframe>
           <p><a href="https://giphy.com/gifs/french-week-sDcfxFDozb3bO"></a></p>
         </table>
       </div>
       <app-rodape-feed></app-rodape-feed>
     </div>
   </div>
+
+  <div *ngFor="let post of perfil.postagem | orderBy: key : reverse">
+    <div class="shadow border my-3" style="height: auto; width: auto">
+      <div class="col m-3">
+        <div class="row">
+          <div class="d-flex align-items-center">
+            <img src="{{ perfil.foto }}" alt="" class="img-fluid rounded-circle m-0" width="34px"
+              height="34px" />
+            <div class="col">
+              <p class="m-0">{{ perfil.nome }}</p>
+              <small class="text-muted m-0">
+                <div>
+                  @{{perfil.usuario}}
+                </div>
+                <div>
+                  {{perfil.tipo}}
+                </div>
+              </small>
+            </div>
+          </div>
+          <div class="col">
+
+            <!--Dropdown-->
+
+            <div *ngIf="idUser == post.usuario.id">
+              <div class="col d-flex justify-content-end align-items-end">
+                <div class="dropdown">
+                  <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item" data-toggle="modal" data-target="#editarPostagem"
+                      [routerLink]="['/perfil-edit', post.id]">Editar</a>
+                    <a class="dropdown-item" data-toggle="modal" data-target="#apagarPostagem"
+                      [routerLink]="['/perfil-edit', post.id]">Apagar</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-2">
+          <h5>{{ post.titulo }}</h5>
+        </div>
+        <div class="row mr-3 mb-2">
+          {{ post.conteudo }}
+        </div>
+        <div class="small">
+          <div class="row">
+            <p>Tema: {{ post.tema.categoria }}</p>
+          </div>
+          <div class="row">
+            <p>
+              Publicado em: {{ post.date | date: "dd/MM/yyyy" }} às
+              {{ post.date | date: "HH:mm" }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <!--/Propaganda-->
@@ -107,98 +161,48 @@
 <!--/Rodapé-->
 
 <!-- Modal -->
-<div
-  class="modal fade"
-  data-backdrop="static"
-  id="EditarPerfil"
-  tabindex="-1"
-  role="dialog"
-  aria-labelledby="TituloModalCentralizado"
-  aria-hidden="true"
->
+<div class="modal fade" data-backdrop="static" id="EditarPerfil" tabindex="-1" role="dialog"
+  aria-labelledby="TituloModalCentralizado" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header" style="background-color: #c0c0c0">
         <h5 class="modal-title" id="TituloModalCentralizado">Editar Perfil</h5>
-        <button
-          type="button"
-          class="close"
-          data-dismiss="modal"
-          aria-label="Fechar"
-        >
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <div class="f-modal">
           <form>
-            <div
-              class="form-group d-flex justify-content-center align-items-center"
-            >
-              <img
-                class="fotouser"
-                src="{{perfil.foto}}"
-                [(ngModel)] = "perfil.foto"
-                name = "foto"
-                alt="Foto do Usuárie"
-              />
-              <div class="custom-file">
-                <input type="file" class="custom-file-input" id="customFile">
-                <label class="custom-file-label" for="customFile">Alterar foto</label>
-              </div>
+            <div class="form-group d-flex justify-content-center align-items-center">
+              <img class="fotouser img-fluid rounded-circle" src="{{perfil.foto}}" alt="Foto do Usuárie" />
+            </div>
+            <div class="form-group">
+              <label for="foto">Link da Foto</label>
+              <input class="form-control shadow rounded" type="text" name="foto" id="nome"
+                placeholder="Insira o link da foto" [(ngModel)]="perfil.foto" />
             </div>
             <div class="form-group">
               <label for="nome">Nome Completo</label>
-              <input
-                class="form-control shadow rounded"
-                type="text"
-                name="nome"
-                id="nome"
-                placeholder="Nome Completo (Atual)"
-                [(ngModel)] = "perfil.nome"
-              />
+              <input class="form-control shadow rounded" type="text" name="nome" id="nome"
+                placeholder="Nome Completo (Atual)" [(ngModel)]="perfil.nome" />
             </div>
             <div class="form-group">
               <label for="usuario">Usuárie</label>
-              <input
-                class="form-control shadow rounded"
-                type="text"
-                name="usuario"
-                id="usuario"
-                placeholder="Usuárie (Atual)"
-                [(ngModel)] = "perfil.usuario"
-              />
+              <input class="form-control shadow rounded" type="text" name="usuario" id="usuario"
+                placeholder="Usuárie (Atual)" [(ngModel)]="perfil.usuario" />
             </div>
             <div class="form-group">
               <label for="e-mail">E-mail</label>
-              <input
-                class="form-control shadow rounded"
-                type="email"
-                name="email"
-                id="email"
-                placeholder="E-mail (Atual)"
-                [(ngModel)] = "perfil.email"
-              />
+              <input class="form-control shadow rounded" type="email" name="email" id="email"
+                placeholder="E-mail (Atual)" [(ngModel)]="perfil.email" />
             </div>
             <label for="inputPassword5">Altere sua senha</label>
-            <input
-              type="password"
-              name="senha"
-              id="senha"
-              class="form-control shadow rounded"
-              placeholder="Crie uma senha"
-              aria-describedby="passwordHelpBlock"
-              (input)="confirmSenha($event)"
-            />
+            <input type="password" name="senha" id="senha" class="form-control shadow rounded"
+              placeholder="Crie uma senha" aria-describedby="passwordHelpBlock" (input)="confirmSenha($event)" />
             <label for="confirmsenha" class="mt-3">Confirmar Senha</label>
-            <input
-              class="form-control shadow rounded"
-              type="password"
-              name="confirmsenha"
-              id="confirmsenha"
-              placeholder="Confirme sua senha"
-              [(ngModel)] = "perfil.senha"
-            />
+            <input class="form-control shadow rounded" type="password" name="confirmsenha" id="confirmsenha"
+              placeholder="Confirme sua senha" [(ngModel)]="perfil.senha" />
           </form>
         </div>
 
@@ -206,11 +210,7 @@
         <div class="modal-footer">
           <div class="">
             <div class="d-flex">
-              <button
-                type="submit"
-                class="btn b-modal-cancel"
-                data-dismiss="modal"
-              >
+              <button type="submit" class="btn b-modal-cancel" data-dismiss="modal">
                 Cancelar
               </button>
               <button type="submit" class="ml-2 btn b-modal" (click)="editPerfil()" data-dismiss="modal">

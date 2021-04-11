@@ -1,5 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light fundo">
-  <img class="img-fluid mr-2 imagem1" routerLink="/feed" src="../../assets/img/LogoEdunity.png" alt="logo">
+  <a routerLink="/feed">
+    <img class="img-fluid mr-2 imagem1" src="../../assets/img/LogoEdunity.png" alt="logo">
+  </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -7,8 +9,8 @@
     <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
 
         <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Digite algo..." aria-label="Pesquisar">
-            <button class="btn my-2 my-sm-0 pesquisar" type="submit">Pesquisar</button>
+            <input (input)="dgtPesquisar($event)" name=pesquisa class="form-control mr-sm-2" type="search" placeholder="Digite algo..." aria-label="Pesquisar" (keyup.enter)="pesquisar()">
+            <button (click)="pesquisar()" class="btn my-2 my-sm-0 pesquisar" type="submit">Pesquisar</button>
         </form>
           
       <ul class="navbar-nav ml-auto d-flex align-items-center">
@@ -21,8 +23,8 @@
         </li>
 
         <li class="nav-item ml-2">
-          <a href="" >
-            <p class="text-white fs-16 m-0" routerLink="/perfil-edit"><i class="fa fa-pencil-square-o " aria-hidden="true"></i></p>
+          <a routerLink="/perfil-edit">
+            <p class="text-white fs-16 m-0" ><i class="fa fa-pencil-square-o " aria-hidden="true"></i></p>
           </a>
         </li>
 

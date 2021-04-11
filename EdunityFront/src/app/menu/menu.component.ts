@@ -9,6 +9,8 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class MenuComponent implements OnInit {
 
+  pesquisa: string
+
   nome = environment.nome
   foto = environment.foto
   usuario = environment.usuario
@@ -18,6 +20,14 @@ export class MenuComponent implements OnInit {
   ) { }
 
   ngOnInit(){
+  }
+
+  dgtPesquisar(event: any){
+    this.pesquisa = event.target.value
+  }
+
+  pesquisar(){
+    this.router.navigate(['/pesquisa', this.pesquisa])    
   }
 
   sair(){

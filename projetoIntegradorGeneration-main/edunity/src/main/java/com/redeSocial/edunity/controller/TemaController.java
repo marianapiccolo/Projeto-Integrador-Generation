@@ -35,9 +35,9 @@ public class TemaController {
 				.orElse(ResponseEntity.notFound().build());
 	}
 
-	@GetMapping("/tema/{descricao}")
-	public ResponseEntity<List<Tema>> GetByDescricao(@PathVariable String descricao) {
-		return ResponseEntity.ok(temaRepository.findAllByDescricaoContainingIgnoreCase(descricao));
+	@GetMapping("/pesquisa/{tags}")
+	public ResponseEntity<List<Tema>> GetByDescricao(@PathVariable String tags) {
+		return ResponseEntity.ok(temaRepository.findAllByTagsContainingIgnoreCase(tags));
 	}
 
 	@PostMapping
@@ -54,11 +54,4 @@ public class TemaController {
 	public void deleteTema(@PathVariable long id) {
 		temaRepository.deleteById(id);
 	}
-
-	/*
-	 * Precisa do "service"
-	 * @DeleteMapping ("/{id}") public ResponseEntity<?> deleteById (@PathVariable
-	 * long id) { return new ResponseEntity<String>("Tema deletado", HttpStatus.OK);
-	 * } 
-	 */
 }

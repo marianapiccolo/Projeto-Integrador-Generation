@@ -5,3 +5,11 @@ ul.lista{
 .border{
     border-radius: 21px;
 }
+
+.lm{
+    font-size: 8pt;
+}
+
+.fa-heart{
+    color: red;
+}

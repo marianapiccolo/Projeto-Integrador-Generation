@@ -1,0 +1,9 @@
+.border{
+    border-radius: 21px;
+}
+
+.btn:focus {
+    background-color: #1a254d;
+    color: white;
+    transition: all 0.5;
+}

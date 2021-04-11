@@ -7,6 +7,8 @@ import { SobreComponent } from './sobre/sobre.component';
 import { ValidMentorComponent } from './valid-mentor/valid-mentor.component';
 import { TemaComponent } from './tema/tema.component';
 import { CRUDUsuarioComponent } from './crudusuario/crudusuario.component';
+import { PesquisaComponent } from './pesquisa/pesquisa.component';
+import { PerfilComponent } from './perfil/perfil.component';
 
 const routes: Routes = [
 
@@ -20,7 +22,9 @@ const routes: Routes = [
   {path: "tag/:id", component:TemaComponent},
   {path: "validacao", component:ValidMentorComponent},
   {path: "perfil-edit", component:CRUDUsuarioComponent},
-  {path: "perfil-edit/:id", component:CRUDUsuarioComponent}
+  {path: "perfil-edit/:id", component:CRUDUsuarioComponent},
+  {path: "pesquisa/:pesquisa", component: PesquisaComponent},
+  {path: "perfil/:usuario", component: PerfilComponent}
   
 ];
 

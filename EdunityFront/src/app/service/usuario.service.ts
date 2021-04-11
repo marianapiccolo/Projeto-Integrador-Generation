@@ -20,4 +20,12 @@ export class UsuarioService {
   getByIdUsuario(id: number): Observable<User>{
     return this.http.get<User>(`http://localhost:8080/usuario/${id}`,this.token)
   }
+
+  getPerfilByUsuarioContainingIgnoreCase(usuario: string): Observable<User[]> {
+    return this.http.get<User[]>(`http://localhost:8080/usuario/pesquisa/${usuario}`, this.token)
+  }
+
+  getPerfilByUsuario(usuario: string): Observable<User> {
+    return this.http.get<User>(`http://localhost:8080/usuario/perfil/${usuario}`, this.token)
+  }
 }

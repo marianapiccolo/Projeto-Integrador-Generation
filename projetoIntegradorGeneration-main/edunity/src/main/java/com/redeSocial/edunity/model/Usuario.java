@@ -9,7 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -20,7 +19,7 @@ public class Usuario {
 	private @NotNull @Size(min = 5, max = 60) String email;
 	private @NotNull String usuario;
 	private @NotNull String senha;
-	private String foto;
+	private String foto = "https://i.imgur.com/v2sPCQf.jpg";
 	private String tipo;
 	private @OneToMany (mappedBy = "usuario", cascade = CascadeType.REMOVE) @JsonIgnoreProperties("usuario") List<Postagem> postagem;
 
