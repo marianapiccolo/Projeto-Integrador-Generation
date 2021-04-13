@@ -2,38 +2,40 @@
   <a routerLink="/feed">
     <img class="img-fluid mr-2 imagem1" src="../../assets/img/LogoEdunity.png" alt="logo">
   </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  
-    <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado"
+    aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-        <form class="form-inline my-2 my-lg-0">
-            <input (input)="dgtPesquisar($event)" name=pesquisa class="form-control mr-sm-2" type="search" placeholder="Digite algo..." aria-label="Pesquisar" (keyup.enter)="pesquisar()">
-            <button (click)="pesquisar()" class="btn my-2 my-sm-0 pesquisar" type="submit">Pesquisar</button>
-        </form>
-          
-      <ul class="navbar-nav ml-auto d-flex align-items-center">
-        <li class="nav-item active">
-          <img class="img-fluid rounded-circle imagem5" src="{{foto}}" alt="Foto Usuario">
-        </li>
+  <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
 
-        <li class="nav-item pl-3">
-          <p class="m-0 font-weight-bold text-white fs-16">Olá, {{nome}}</p>
-        </li>
+    <form class="form-inline my-2 my-lg-0">
+      <input (input)="dgtPesquisar($event)" name=pesquisa class="form-control mr-sm-2" type="search"
+        placeholder="Digite algo..." aria-label="Pesquisar" (keyup.enter)="pesquisar()">
+      <button (click)="pesquisar()" class="btn my-2 my-sm-0 pesquisar" type="submit">Pesquisar</button>
+    </form>
 
-        <li class="nav-item ml-2">
-          <a routerLink="/perfil-edit">
-            <p class="text-white fs-16 m-0" ><i class="fa fa-pencil-square-o " aria-hidden="true"></i></p>
-          </a>
-        </li>
+    <ul class="navbar-nav ml-auto d-flex align-items-center">
+      <li class="nav-item active">
+        <img class="img-fluid rounded-circle imagem5" src="{{foto}}" alt="Foto Usuario">
+      </li>
 
-        <li class="nav-item pl-3">
-          <a class="font-weight-bold text-white fs-16" (click)="sair()">Sair <i class="fa fa-sign-out ml-1" aria-hidden="true"></i></a>
-        </li>        
-        
-      </ul>
-      
-    </div>
-  </nav>
+      <li class="nav-item pl-3">
+        <p class="m-0 font-weight-bold text-white fs-16">Olá, {{nome}}</p>
+      </li>
 
+      <li class="nav-item ml-2">
+        <a routerLink="/perfil-edit">
+          <p class="text-white fs-16 m-0"><i class="fa fa-pencil-square-o " aria-hidden="true"></i></p>
+        </a>
+      </li>
+
+      <li class="nav-item pl-3">
+        <a class="font-weight-bold text-white fs-16" (click)="sair()">Sair <i class="fa fa-sign-out ml-1"
+            aria-hidden="true"></i></a>
+      </li>
+
+    </ul>
+
+  </div>
+</nav>
