@@ -13,3 +13,8 @@ ul.lista{
 .fa-heart{
     color: red;
 }
+
+.sticky {
+    position: sticky;
+    top: 10px;
+  }

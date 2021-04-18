@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="pt-br">
+
 <head>
   <meta charset="utf-8">
   <title>EdunityFront</title>
@@ -8,7 +9,24 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+
 <body>
   <app-root></app-root>
+  <div *ngIf="auth.logado() == false">
+    <script>
+      window.watsonAssistantChatOptions = {
+        integrationID: "e52b8d77-cc2d-4a33-a8c4-10e78c10e056", // The ID of this integration.
+        region: "us-south", // The region your integration is hosted in.
+        serviceInstanceID: "fbac226e-fea6-4ade-90cd-daa2537e41f0", // The ID of your service instance.
+        onLoad: function (instance) { instance.render(); }
+      };
+      setTimeout(function () {
+        const t = document.createElement('script');
+        t.src = "https://web-chat.global.assistant.watson.appdomain.cloud/loadWatsonAssistantChat.js";
+        document.head.appendChild(t);
+      });
+    </script>
+  </div>
 </body>
+
 </html>

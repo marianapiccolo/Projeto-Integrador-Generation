@@ -14,15 +14,17 @@
           </button>
         </div>
       </div>
-      <div class="shadow border mt-3">
-        <div class="mt-3 mb-3 text-center">
-          <h6>Veja todas as tags</h6>
-          <button class="btn text-white" type="menu" style="background-color: #1a254d" routerLink="/tag">
-            Ver tags
-          </button>
+      <section class="sticky">
+        <div class="shadow border mt-3">
+          <div class="mt-3 mb-3 text-center">
+            <h6>Veja todas as tags</h6>
+            <button class="btn text-white" type="menu" style="background-color: #1a254d" routerLink="/tag">
+              Ver tags
+            </button>
+          </div>
         </div>
-      </div>
-      <app-rodape-feed></app-rodape-feed>
+        <app-rodape-feed></app-rodape-feed>
+      </section>
     </div>
     <div class="col-6">
       <div class="shadow border d-flex align-items-center" style="height: 144px">
@@ -115,6 +117,13 @@
         </div>
       </div>
     </div>
+    <div class="col-3">
+      <section class="sticky">
+        <div class="d-flex justify-items-end">
+          <img src="../../assets/img/19197614.jpg" alt="" width="233px" height="233px">
+        </div>
+      </section>
+    </div>
   </div>
 </div>
 
@@ -177,7 +186,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <p>Tem certeza que deseja apagar a postagem "{{postagem.titulo}}"?</p>
+        <p>Tem certeza que deseja apagar a postagem "{{edtPostagem.titulo}}"?</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn text-muted" data-dismiss="modal" routerLink="/feed">Fechar</button>
