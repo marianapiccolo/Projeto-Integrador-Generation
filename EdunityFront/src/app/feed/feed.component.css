@@ -2,10 +2,6 @@ ul.lista{
     list-style: none;
 }
 
-.border{
-    border-radius: 21px;
-}
-
 .lm{
     font-size: 8pt;
 }
@@ -18,3 +14,5 @@ ul.lista{
     position: sticky;
     top: 10px;
   }
+
+

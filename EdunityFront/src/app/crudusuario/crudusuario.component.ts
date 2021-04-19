@@ -5,6 +5,7 @@ import { Postagem } from '../model/Postagem';
 import { User } from '../model/User';
 import { AlertasService } from '../service/alerta.service';
 import { AuthService } from '../service/auth.service';
+import { PostagemService } from '../service/postagem.service';
 import { UsuarioService } from '../service/usuario.service';
 
 @Component({
@@ -15,8 +16,11 @@ import { UsuarioService } from '../service/usuario.service';
 export class CRUDUsuarioComponent implements OnInit {
 
   perfil: User = new User()
+  user: User = new User()
   idUser: number
   confirmarSenha: string
+  postagensUsuario: Postagem[]
+  listaPostagens: Postagem[]
 
   idAtivo = environment.id
   nome = environment.nome
@@ -27,14 +31,13 @@ export class CRUDUsuarioComponent implements OnInit {
   key: string = "post.date"
   reverse = true
 
-  postagensUsuario: Postagem[]
-
   constructor(
     private router: Router,
     private usuarioService: UsuarioService,
     private route: ActivatedRoute,
     private auth: AuthService,
-    private alerta: AlertasService
+    private alerta: AlertasService,
+    private postagemService: PostagemService
   ) { }
 
   ngOnInit() {
@@ -44,8 +47,26 @@ export class CRUDUsuarioComponent implements OnInit {
       this.alerta.showAlertDanger("Sua seção expirou, faça o login novamente.")
       this.router.navigate(["/login"])
     }
+    this.findAllPostagens()
+
     this.idUser = this.route.snapshot.params["id"]
     this.findUsuarioById(this.idUser)
+
+    this.findPerfilByUsuario(this.usuario)
+  }
+
+  findPerfilByUsuario(usuario: string) {
+    this.usuarioService.getPerfilByUsuario(usuario).subscribe((resp: User) => {
+    this.user = resp
+
+    this.postagensUsuario = this.user.postagem
+    })
+  }
+
+  findAllPostagens() {
+    this.postagemService.getAllPostagem().subscribe((resp: Postagem[]) => {
+      this.listaPostagens = resp
+    })
   }
 
   findUsuarioById(id: number) {

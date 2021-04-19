@@ -22,28 +22,29 @@ export class CadastrarComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    window.scroll(0,0)
+    window.scroll(0, 0)
   }
 
   confirmSenha(event: any) {
     this.confirmarSenha = event.target.value
   }
 
-  tipoUser(event: any){
+  tipoUser(event: any) {
     this.tipoUsuario = event.target.value
   }
 
-  cadastrar(){
+  cadastrar() {
     this.user.tipo = this.tipoUsuario
 
-    if(this.user.senha != this.confirmarSenha){
+    if (this.user.senha != this.confirmarSenha) {
       this.alerta.showAlertDanger("As senhas estão divergentes")
     } else {
-      if(this.user.tipo == "Professor/Mentor"){
+      if (this.user.tipo == "Professor/Mentor") {
         this.authService.cadastrar(this.user).subscribe((resp: User) => {
-        this.user = resp
-      })
-        this.router.navigate(["/validacao"])
+          this.user = resp
+        })
+        this.router.navigate(["/login"])
+        this.alerta.showAlertSuccess("Usuárie cadastrado com sucesso!")
       } else {
         this.authService.cadastrar(this.user).subscribe((resp: User) => {
           this.user = resp
@@ -53,7 +54,7 @@ export class CadastrarComponent implements OnInit {
       }
     }
 
-    
+
   }
 
 }
