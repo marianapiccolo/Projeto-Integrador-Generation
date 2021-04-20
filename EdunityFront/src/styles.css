@@ -1,1 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+.a{
+    color: #1a254d;
+}
+
+@media (max-width: 600px) {
+    .responsive {
+        display: none;
+    }
+}
+
+.border{
+    border-radius: 21px;
+}
+

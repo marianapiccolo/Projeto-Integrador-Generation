@@ -1,6 +1,6 @@
-<div class="container-fluid m-5">
-  <div class="row">
-    <div class="col-9">
+<div class="container-fluid">
+  <div class="row mt-5 d-flex justify-content-around flex-nowrap">
+    <div class="col-sm-9">
       <!--Card Usuário-->
       <div class="card usercard">
         <div class="card-body">
@@ -28,44 +28,25 @@
 
       <!--Licenças e Certificados-->
 
-      <div *ngIf = "tipo == 'Professor/Mentor'">
+      <div *ngIf="tipo == 'Professor/Mentor'">
         <div class="container-fluid licenças my-3">
           <div class="card-body">
             <div class="row">
               <p class="card-title" style="width: 38rem">
                 Licenças e Certificados
               </p>
-              <div class="row my-5">
-                <div class="col-sm-4">
-                  <div class="card mr-3">
-                    <div class="card-body">
-                      <h5 class="card-title">Certificado</h5>
-                      <p class="card-text">
-                        Clique aqui para conferir o certificado.
-                      </p>
-                      <a href="#" class="btn btn-primary">Visualizar</a>
+              <div class="row my-5 justify-content-center">
+                <div class="col-sm-6">
+                  <div class="card">
+                    <div class="card-body justify-content-center">
+                      <img src="https://i.imgur.com/YPXJrnz.jpg" style="width: 150px; height: 100px;">
                     </div>
                   </div>
                 </div>
-                <div class="col-sm-4">
-                  <div class="card mr-3">
+                <div class="col-sm-6">
+                  <div class="card">
                     <div class="card-body">
-                      <h5 class="card-title">Certificado</h5>
-                      <p class="card-text">
-                        Clique aqui para conferir o certificado.
-                      </p>
-                      <a href="#" class="btn btn-primary">Visualizar</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-4">
-                  <div class="card mr-3">
-                    <div class="card-body">
-                      <h5 class="card-title">Certificado</h5>
-                      <p class="card-text">
-                        Clique aqui para conferir o certificado.
-                      </p>
-                      <a href="#" class="btn btn-primary">Visualizar</a>
+                      <img src="https://i.imgur.com/0EjBO5q.jpg" style="width: 150px; height: 100px;">
                     </div>
                   </div>
                 </div>
@@ -76,8 +57,68 @@
       </div>
 
       <!--/Licenças e Certificados-->
+
+      <div *ngFor="let post of user.postagem | orderBy: key : reverse">
+        <div class="shadow border my-3" style="height: auto; width: auto">
+          <div class="col m-3">
+            <div class="row">
+              <div class="d-flex align-items-center">
+                <img src="{{ user.foto }}" alt="" class="img-fluid rounded-circle m-0" width="34px" height="34px" />
+                <div class="col">
+                  <p class="m-0">{{ user.nome }}</p>
+                  <small class="text-muted m-0">
+                    <div>
+                      @{{user.usuario}}
+                    </div>
+                    <div>
+                      {{user.tipo}}
+                    </div>
+                  </small>
+                </div>
+              </div>
+              <div class="col">
+
+                <!--Dropdown-->
+
+                <div>
+                  <div class="col d-flex justify-content-end align-items-end">
+                    <div class="dropdown">
+                      <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item" data-toggle="modal" data-target="#editarPostagem"
+                          [routerLink]="['/perfil-edit', post.id]">Editar</a>
+                        <a class="dropdown-item" data-toggle="modal" data-target="#apagarPostagem"
+                          [routerLink]="['/perfil-edit', post.id]">Apagar</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row mt-2">
+              <h5>{{ post.titulo }}</h5>
+            </div>
+            <div class="row mr-3 mb-2">
+              {{ post.conteudo }}
+            </div>
+            <div class="small">
+              <div class="row">
+                <p>Tema: {{ post.tema.categoria }}</p>
+              </div>
+              <div class="row">
+                <p>
+                  Publicado em: {{ post.date | date: "dd/MM/yyyy" }} às
+                  {{ post.date | date: "HH:mm" }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="col-3">
+    <div class="col-3 responsive">
       <!--Propaganda-->
 
       <div class="">
@@ -88,68 +129,6 @@
       </div>
     </div>
   </div>
-
-  <div *ngFor="let post of perfil.postagem | orderBy: key : reverse">
-    <div class="shadow border my-3" style="height: auto; width: auto">
-      <div class="col m-3">
-        <div class="row">
-          <div class="d-flex align-items-center">
-            <img src="{{ perfil.foto }}" alt="" class="img-fluid rounded-circle m-0" width="34px"
-              height="34px" />
-            <div class="col">
-              <p class="m-0">{{ perfil.nome }}</p>
-              <small class="text-muted m-0">
-                <div>
-                  @{{perfil.usuario}}
-                </div>
-                <div>
-                  {{perfil.tipo}}
-                </div>
-              </small>
-            </div>
-          </div>
-          <div class="col">
-
-            <!--Dropdown-->
-
-            <div *ngIf="idUser == post.usuario.id">
-              <div class="col d-flex justify-content-end align-items-end">
-                <div class="dropdown">
-                  <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" data-toggle="modal" data-target="#editarPostagem"
-                      [routerLink]="['/perfil-edit', post.id]">Editar</a>
-                    <a class="dropdown-item" data-toggle="modal" data-target="#apagarPostagem"
-                      [routerLink]="['/perfil-edit', post.id]">Apagar</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row mt-2">
-          <h5>{{ post.titulo }}</h5>
-        </div>
-        <div class="row mr-3 mb-2">
-          {{ post.conteudo }}
-        </div>
-        <div class="small">
-          <div class="row">
-            <p>Tema: {{ post.tema.categoria }}</p>
-          </div>
-          <div class="row">
-            <p>
-              Publicado em: {{ post.date | date: "dd/MM/yyyy" }} às
-              {{ post.date | date: "HH:mm" }}
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
 </div>
 
 <!--/Propaganda-->

@@ -1,7 +1,7 @@
 <div class="container fontWork">
 
     <div class="row">
-        <div class="col-3 mt-5">
+        <div class="col-md-3 mt-5">
             <div class="card cardSet" style="width: auto; height: auto; border-radius: 21px;">
                 <div class="row">
                     <div class="col-12 text-center">
@@ -19,7 +19,7 @@
             </div>
         </div>
 
-        <div class="col-6 mt-5">
+        <div class="col-md-6 mt-5">
             <div class="tab-content" id="v-pills-tabContent">
                 <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
                     aria-labelledby="v-pills-home-tab">
@@ -53,7 +53,7 @@
                                         <img src="{{ post.usuario.foto }}" alt="" class="img-fluid rounded-circle m-0"
                                             width="34px" height="34px" />
                                         <div class="col">
-                                            <p class="m-0">{{ post.usuario.nome }}</p>
+                                            <a [routerLink]="['/perfil', post.usuario.usuario]" class="m-0">{{ post.usuario.nome }}</a>
                                             <small class="text-muted m-0">
                                                 <div>
                                                     @{{post.usuario.usuario}}
@@ -95,7 +95,7 @@
                                         <img src="{{item.foto}}" alt="Foto perfil" class="rounded-circle" width="55px"
                                             height="55px">
                                         <div class="col">
-                                            <p class="m-0">{{ item.nome }}</p>
+                                            <a [routerLink]="['/perfil', item.usuario]" class="m-0">{{ item.nome }}</a>
                                             <small class="text-muted m-0">
                                                 <div>
                                                     @{{item.usuario}}
